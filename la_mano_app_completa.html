@@ -1,626 +1,850 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Mano — Mayorista · Precios Bajos · Siempre</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Nunito Sans',sans-serif;background:#f2f0eb;color:#1a1a1a;font-size:14px;}
-:root{--red:#E31E24;--red-dark:#b01018;--yellow:#FFD700;--yellow-dark:#e6c200;--bg:#f2f0eb;--white:#fff;--gray:#888;--light:#fafaf7;}
+:root{
+  --red:#E31E24;--red-dark:#B8161C;--red-light:#fef2f2;
+  --yellow:#FFD700;--yellow-dark:#e6c000;--yellow-text:#7a4a00;
+  --bg:#f0ede6;--white:#fff;--dark:#1a1a1a;--gray:#666;--light-gray:#f8f7f3;
+  --border:#e5e0d5;--green:#2e7d32;
+}
+body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark);font-size:14px;min-height:100vh;}
 
-/* NAV */
-.topbar{background:var(--red-dark);color:#fff;font-size:11px;text-align:center;padding:5px;font-family:'Nunito',sans-serif;font-weight:700;letter-spacing:.04em;}
-.navbar{background:#fff;border-bottom:3px solid var(--red);padding:10px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:200;}
-.logo{display:flex;align-items:center;gap:8px;flex-shrink:0;cursor:pointer;}
-.logo-box{width:44px;height:44px;background:var(--red);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;}
-.logo-name{font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;color:var(--red);line-height:1.1;}
-.logo-tag{font-size:9px;color:#888;font-weight:600;letter-spacing:.06em;text-transform:uppercase;}
-.search-wrap{flex:1;max-width:440px;display:flex;background:#f2f0eb;border:2px solid #ddd;border-radius:9px;overflow:hidden;}
-.search-wrap input{flex:1;border:none;background:transparent;padding:8px 12px;font-family:'Nunito Sans',sans-serif;font-size:13px;outline:none;color:#1a1a1a;}
-.search-wrap button{background:var(--red);border:none;padding:0 14px;color:#fff;cursor:pointer;font-size:16px;}
-.nav-right{margin-left:auto;display:flex;align-items:center;gap:6px;}
-.nav-ico-btn{display:flex;flex-direction:column;align-items:center;gap:1px;background:none;border:none;cursor:pointer;padding:5px 8px;border-radius:8px;color:#555;font-size:10px;font-family:'Nunito',sans-serif;font-weight:700;transition:all .15s;}
-.nav-ico-btn i{font-size:20px;}
-.nav-ico-btn:hover{background:#fef5f5;color:var(--red);}
-.cart-btn-nav{background:var(--red);color:#fff;border-radius:9px;flex-direction:row;padding:7px 12px;font-size:12px;gap:5px;position:relative;}
-.cart-btn-nav:hover{background:var(--red-dark);color:#fff;}
-.cart-badge{position:absolute;top:-5px;right:-5px;background:var(--yellow);color:#7a3a00;font-size:9px;font-weight:900;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;}
-.catbar{background:var(--red);display:flex;overflow-x:auto;padding:0 20px;gap:0;scrollbar-width:none;}
+/* ─── TOPBAR ─── */
+.topbar{background:var(--red-dark);color:#fff;text-align:center;padding:7px 16px;font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;letter-spacing:.03em;}
+
+/* ─── NAVBAR ─── */
+.navbar{background:#fff;border-bottom:3px solid var(--red);padding:10px 24px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:300;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer;flex-shrink:0;text-decoration:none;}
+.logo-badge{width:46px;height:46px;background:var(--red);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;}
+.logo-name{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;color:var(--red);line-height:1;}
+.logo-tag{font-size:9px;color:#999;font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-top:1px;}
+.search-box{flex:1;max-width:460px;display:flex;background:var(--bg);border:2px solid var(--border);border-radius:10px;overflow:hidden;transition:border .2s;}
+.search-box:focus-within{border-color:var(--red);}
+.search-box input{flex:1;border:none;background:transparent;padding:9px 14px;font-family:'Nunito Sans',sans-serif;font-size:13px;outline:none;color:var(--dark);}
+.search-box button{background:var(--red);border:none;padding:0 16px;color:#fff;cursor:pointer;font-size:18px;transition:background .15s;}
+.search-box button:hover{background:var(--red-dark);}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:4px;}
+.nbtn{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;cursor:pointer;padding:5px 9px;border-radius:8px;color:#555;font-size:10px;font-family:'Nunito',sans-serif;font-weight:700;transition:all .15s;}
+.nbtn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;}
+.nbtn:hover{background:var(--red-light);color:var(--red);}
+.cart-nbtn{background:var(--red);color:#fff;border-radius:10px;flex-direction:row;font-size:12px;gap:6px;padding:8px 14px;position:relative;}
+.cart-nbtn svg{width:20px;height:20px;}
+.cart-nbtn:hover{background:var(--red-dark);color:#fff;}
+.cart-count{position:absolute;top:-6px;right:-6px;background:var(--yellow);color:var(--yellow-text);font-size:10px;font-weight:900;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;}
+
+/* ─── CATEGORY BAR ─── */
+.catbar{background:var(--red);display:flex;overflow-x:auto;padding:0 24px;scrollbar-width:none;}
 .catbar::-webkit-scrollbar{display:none;}
-.catitem{color:rgba(255,255,255,.8);font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;padding:10px 14px;cursor:pointer;border-bottom:3px solid transparent;transition:all .15s;white-space:nowrap;}
-.catitem:hover,.catitem.active{color:var(--yellow);border-bottom-color:var(--yellow);}
+.catbtn{color:rgba(255,255,255,.82);font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;padding:11px 15px;cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:5px;}
+.catbtn:hover,.catbtn.active{color:var(--yellow);border-bottom-color:var(--yellow);}
 
-/* VIEWS */
+/* ─── VIEWS ─── */
 .view{display:none;}
 .view.active{display:block;}
 
-/* HOME */
-.hero{background:linear-gradient(135deg,var(--red) 0%,var(--red-dark) 100%);padding:28px 20px;display:flex;align-items:center;gap:20px;min-height:160px;position:relative;overflow:hidden;}
-.hero-ghost{position:absolute;right:10px;top:-10px;font-size:120px;opacity:.06;pointer-events:none;}
-.hero-content{flex:1;}
-.hero-pill{background:var(--yellow);color:#7a3a00;font-family:'Nunito',sans-serif;font-weight:800;font-size:10px;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;letter-spacing:.04em;text-transform:uppercase;}
-.hero h1{font-family:'Nunito',sans-serif;font-weight:900;font-size:28px;color:#fff;line-height:1.1;margin-bottom:6px;}
-.hero h1 span{color:var(--yellow);}
-.hero p{color:rgba(255,255,255,.85);font-size:13px;margin-bottom:16px;line-height:1.5;}
-.hero-btns{display:flex;gap:8px;flex-wrap:wrap;}
-.btn-hero{background:var(--yellow);color:#7a3a00;border:none;padding:10px 18px;font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;border-radius:9px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:transform .1s;}
-.btn-hero:hover{transform:scale(1.03);}
-.btn-hero2{background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.35);padding:10px 18px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;border-radius:9px;cursor:pointer;display:flex;align-items:center;gap:5px;}
-.hero-stats{display:flex;flex-direction:column;gap:8px;flex-shrink:0;}
-.stat-box{background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.2);border-radius:12px;padding:10px 14px;text-align:center;color:#fff;}
-.stat-num{font-family:'Nunito',sans-serif;font-weight:900;font-size:24px;color:var(--yellow);line-height:1;}
-.stat-label{font-size:10px;opacity:.8;margin-top:2px;}
-.ystrip{background:var(--yellow);padding:9px 20px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;}
-.yitem{display:flex;align-items:center;gap:6px;font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;color:#7a3a00;}
-.yitem i{font-size:16px;}
-.main-pad{padding:20px;}
-.sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
-.sec-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;color:#1a1a1a;display:flex;align-items:center;gap:7px;}
-.sec-title::before{content:'';display:block;width:4px;height:20px;background:var(--red);border-radius:2px;}
-.see-all{font-size:12px;color:var(--red);font-weight:700;cursor:pointer;background:none;border:none;font-family:'Nunito',sans-serif;display:flex;align-items:center;gap:3px;}
-.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:10px;margin-bottom:24px;}
-.cat-card{background:#fff;border-radius:12px;padding:14px 8px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all .15s;}
-.cat-card:hover{border-color:var(--red);transform:translateY(-2px);}
-.cat-card .ico{font-size:26px;margin-bottom:6px;display:block;}
-.cat-card .nm{font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;color:#333;line-height:1.2;}
+/* ─── HERO ─── */
+.hero{background:linear-gradient(135deg,var(--red) 0%,var(--red-dark) 100%);padding:32px 24px;display:flex;align-items:center;gap:24px;position:relative;overflow:hidden;min-height:180px;}
+.hero-watermark{position:absolute;right:-10px;top:-20px;font-size:160px;opacity:.05;pointer-events:none;line-height:1;}
+.hero-body{flex:1;}
+.hero-pill{background:var(--yellow);color:var(--yellow-text);font-family:'Nunito',sans-serif;font-weight:800;font-size:10px;padding:4px 12px;border-radius:20px;display:inline-flex;align-items:center;gap:5px;margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase;}
+.hero h1{font-family:'Nunito',sans-serif;font-weight:900;font-size:34px;color:#fff;line-height:1.05;margin-bottom:8px;}
+.hero h1 em{color:var(--yellow);font-style:normal;}
+.hero p{color:rgba(255,255,255,.85);font-size:13px;margin-bottom:20px;line-height:1.6;}
+.hero-ctas{display:flex;gap:10px;flex-wrap:wrap;}
+.btn-yellow{background:var(--yellow);color:var(--yellow-text);border:none;padding:11px 20px;font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:transform .1s,background .15s;}
+.btn-yellow:hover{transform:scale(1.03);background:var(--yellow-dark);}
+.btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:2px solid rgba(255,255,255,.35);padding:11px 20px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background .15s;}
+.btn-ghost:hover{background:rgba(255,255,255,.22);}
+.hero-stats{display:flex;flex-direction:column;gap:10px;flex-shrink:0;}
+.hstat{background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.2);border-radius:14px;padding:12px 18px;text-align:center;color:#fff;}
+.hstat-n{font-family:'Nunito',sans-serif;font-weight:900;font-size:28px;color:var(--yellow);line-height:1;}
+.hstat-l{font-size:11px;opacity:.8;margin-top:2px;}
 
-/* PRODUCTS */
-.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:12px;margin-bottom:24px;}
-.prod-card{background:#fff;border-radius:12px;border:1.5px solid #e8e4da;transition:all .15s;cursor:pointer;overflow:hidden;}
-.prod-card:hover{border-color:var(--red);transform:translateY(-2px);box-shadow:0 6px 18px rgba(227,30,36,.1);}
-.prod-img{height:100px;background:#f8f7f3;display:flex;align-items:center;justify-content:center;font-size:42px;position:relative;}
-.pbadge{position:absolute;top:7px;left:7px;font-size:9px;font-weight:800;padding:2px 7px;border-radius:5px;font-family:'Nunito',sans-serif;}
+/* ─── YELLOW STRIP ─── */
+.ystrip{background:var(--yellow);padding:10px 24px;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;}
+.yitem{display:flex;align-items:center;gap:7px;font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;color:var(--yellow-text);}
+.yitem svg{width:17px;height:17px;stroke:var(--yellow-text);fill:none;stroke-width:2;}
+
+/* ─── MAIN PAD ─── */
+.pad{padding:20px 24px;}
+
+/* ─── SECTION HEADER ─── */
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.sec-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:19px;color:var(--dark);display:flex;align-items:center;gap:8px;}
+.sec-title::before{content:'';display:block;width:4px;height:22px;background:var(--red);border-radius:3px;}
+.link-btn{font-size:12px;color:var(--red);font-weight:700;font-family:'Nunito',sans-serif;background:none;border:1.5px solid var(--red);padding:5px 12px;border-radius:7px;cursor:pointer;transition:all .15s;}
+.link-btn:hover{background:var(--red);color:#fff;}
+
+/* ─── RETIRO BANNER ─── */
+.retiro-banner{background:#fff;border:2px solid var(--yellow);border-radius:14px;padding:14px 18px;margin-bottom:22px;display:flex;align-items:center;gap:14px;}
+.retiro-ico{width:46px;height:46px;background:var(--yellow);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.retiro-text h3{font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;margin-bottom:3px;}
+.retiro-text p{font-size:12px;color:var(--gray);line-height:1.5;}
+
+/* ─── CATEGORY GRID ─── */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;margin-bottom:26px;}
+.cat-card{background:#fff;border-radius:13px;padding:16px 8px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all .18s;}
+.cat-card:hover{border-color:var(--red);transform:translateY(-3px);box-shadow:0 6px 16px rgba(227,30,36,.1);}
+.cat-card .ci{font-size:28px;display:block;margin-bottom:7px;}
+.cat-card .cn{font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;color:#333;line-height:1.2;}
+
+/* ─── PRODUCT GRID ─── */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px;margin-bottom:26px;}
+.pcard{background:#fff;border-radius:13px;border:1.5px solid var(--border);transition:all .18s;overflow:hidden;display:flex;flex-direction:column;}
+.pcard:hover{border-color:var(--red);transform:translateY(-3px);box-shadow:0 8px 22px rgba(227,30,36,.1);}
+.pcard-img{height:108px;background:var(--light-gray);display:flex;align-items:center;justify-content:center;font-size:46px;position:relative;}
+.pbadge{position:absolute;top:8px;left:8px;font-size:9px;font-weight:800;padding:3px 8px;border-radius:6px;font-family:'Nunito',sans-serif;letter-spacing:.02em;}
 .pbadge.red{background:var(--red);color:#fff;}
-.pbadge.yellow{background:var(--yellow);color:#7a3a00;}
-.prod-info{padding:9px 10px;}
-.prod-name{font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:#222;margin-bottom:2px;line-height:1.3;}
-.prod-sub{font-size:10px;color:#999;margin-bottom:5px;}
-.prod-price{font-family:'Nunito',sans-serif;font-weight:900;font-size:16px;color:var(--red);}
-.prod-price span{font-size:10px;color:#bbb;font-weight:400;}
-.prod-pack{font-size:10px;color:#777;margin-top:1px;}
-.add-btn{width:100%;background:var(--red);color:#fff;border:none;padding:7px;font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;transition:background .15s;}
+.pbadge.yellow{background:var(--yellow);color:var(--yellow-text);}
+.pbadge.green{background:#e8f5e9;color:#1b5e20;}
+.pcard-body{padding:10px 11px;flex:1;}
+.pcard-brand{font-size:10px;color:#aaa;font-weight:600;margin-bottom:2px;}
+.pcard-name{font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#222;margin-bottom:2px;line-height:1.3;}
+.pcard-pack{font-size:10px;color:#bbb;margin-bottom:6px;}
+.pcard-price{font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;color:var(--red);}
+.pcard-unit{font-size:10px;color:#ccc;font-weight:400;}
+.pcard-total{font-size:10px;color:#999;margin-top:1px;}
+.add-btn{width:100%;background:var(--red);color:#fff;border:none;padding:8px;font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;transition:background .15s;}
 .add-btn:hover{background:var(--red-dark);}
-.add-btn.added{background:#2e7d32;}
+.add-btn.added{background:var(--green);}
 
-/* FILTERS */
-.filters-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
-.filter-chip{background:#fff;border:1.5px solid #ddd;border-radius:20px;padding:5px 12px;font-size:12px;font-family:'Nunito',sans-serif;font-weight:700;cursor:pointer;color:#555;transition:all .15s;}
-.filter-chip:hover,.filter-chip.active{background:var(--red);border-color:var(--red);color:#fff;}
+/* ─── FILTERS ─── */
+.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px;}
+.fchip{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:5px 13px;font-size:12px;font-family:'Nunito',sans-serif;font-weight:700;cursor:pointer;color:#555;transition:all .15s;}
+.fchip:hover,.fchip.active{background:var(--red);border-color:var(--red);color:#fff;}
+.prod-count{font-size:12px;color:#999;font-family:'Nunito',sans-serif;font-weight:700;}
 
-/* CART VIEW */
-.cart-layout{display:grid;grid-template-columns:1fr 300px;gap:20px;padding:20px;align-items:start;}
-.cart-items{}
-.cart-empty{text-align:center;padding:60px 20px;color:#999;}
-.cart-empty i{font-size:60px;display:block;margin-bottom:12px;color:#ddd;}
-.cart-empty p{font-size:16px;font-family:'Nunito',sans-serif;font-weight:700;}
-.cart-item{background:#fff;border-radius:12px;border:1.5px solid #e8e4da;padding:12px;margin-bottom:10px;display:flex;align-items:center;gap:12px;}
-.cart-item-icon{font-size:36px;width:50px;text-align:center;flex-shrink:0;}
-.cart-item-info{flex:1;}
-.cart-item-name{font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;margin-bottom:2px;}
-.cart-item-sub{font-size:11px;color:#999;}
-.cart-qty{display:flex;align-items:center;gap:6px;margin-top:6px;}
-.qty-btn{width:26px;height:26px;border-radius:50%;border:1.5px solid #ddd;background:#fff;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;color:#555;font-family:'Nunito',sans-serif;font-weight:900;transition:all .15s;}
+/* ─── HOW IT WORKS ─── */
+.how-box{background:#fff;border-radius:14px;padding:22px 20px;margin-bottom:22px;}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin-top:16px;}
+.step{text-align:center;}
+.step-n{width:42px;height:42px;border-radius:50%;background:var(--red);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;}
+.step-ico{font-size:22px;display:block;margin-bottom:5px;}
+.step-t{font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;margin-bottom:3px;}
+.step-d{font-size:11px;color:var(--gray);line-height:1.4;}
+
+/* ─── CART ─── */
+.cart-layout{display:grid;grid-template-columns:1fr 300px;gap:20px;padding:20px 24px;align-items:start;}
+@media(max-width:700px){.cart-layout{grid-template-columns:1fr;}.checkout-layout{grid-template-columns:1fr;}}
+.cart-empty{text-align:center;padding:60px 20px;color:#ccc;grid-column:1/-1;}
+.cart-empty-icon{font-size:60px;display:block;margin-bottom:12px;}
+.cart-empty p{font-size:16px;font-family:'Nunito',sans-serif;font-weight:700;color:#bbb;}
+.citem{background:#fff;border-radius:12px;border:1.5px solid var(--border);padding:12px;margin-bottom:10px;display:flex;align-items:center;gap:12px;}
+.citem-icon{font-size:38px;width:52px;text-align:center;flex-shrink:0;}
+.citem-info{flex:1;}
+.citem-name{font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;margin-bottom:2px;}
+.citem-sub{font-size:11px;color:#bbb;}
+.qty-row{display:flex;align-items:center;gap:7px;margin-top:7px;}
+.qty-btn{width:27px;height:27px;border-radius:50%;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:#555;font-weight:900;transition:all .15s;}
 .qty-btn:hover{background:var(--red);border-color:var(--red);color:#fff;}
-.qty-num{font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;min-width:20px;text-align:center;}
-.cart-item-price{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:var(--red);flex-shrink:0;}
-.del-btn{background:none;border:none;cursor:pointer;color:#ccc;font-size:18px;flex-shrink:0;}
+.qty-n{font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;min-width:22px;text-align:center;}
+.citem-price{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:var(--red);flex-shrink:0;}
+.del-btn{background:none;border:none;cursor:pointer;color:#ddd;font-size:20px;padding:4px;flex-shrink:0;transition:color .15s;}
 .del-btn:hover{color:var(--red);}
-/* ORDER SUMMARY */
-.order-summary{background:#fff;border-radius:14px;border:1.5px solid #e8e4da;padding:16px;position:sticky;top:80px;}
-.os-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:16px;margin-bottom:14px;padding-bottom:12px;border-bottom:1.5px solid #f0eee8;}
-.os-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:13px;}
-.os-row .label{color:#666;}
-.os-row .val{font-weight:700;font-family:'Nunito',sans-serif;}
-.os-total{display:flex;justify-content:space-between;border-top:2px solid #1a1a1a;padding-top:12px;margin-top:8px;}
-.os-total .label{font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;}
-.os-total .val{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;color:var(--red);}
-.retiro-info{background:#fffbea;border:1.5px solid var(--yellow);border-radius:10px;padding:10px 12px;margin:12px 0;font-size:11px;color:#7a3a00;}
-.retiro-info strong{display:block;font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;margin-bottom:3px;}
-.checkout-btn{width:100%;background:var(--red);color:#fff;border:none;padding:13px;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;transition:background .15s;}
-.checkout-btn:hover{background:var(--red-dark);}
-.checkout-btn:disabled{background:#ccc;cursor:default;}
 
-/* CHECKOUT */
-.checkout-layout{display:grid;grid-template-columns:1fr 280px;gap:20px;padding:20px;align-items:start;}
-.step-bar{display:flex;align-items:center;gap:0;margin-bottom:24px;}
-.step-dot{display:flex;flex-direction:column;align-items:center;gap:4px;}
-.step-circle{width:32px;height:32px;border-radius:50%;background:#e0ddd6;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;color:#888;transition:all .3s;}
-.step-circle.done{background:var(--red);color:#fff;}
-.step-circle.active{background:var(--red);color:#fff;box-shadow:0 0 0 4px rgba(227,30,36,.2);}
-.step-label{font-size:10px;font-family:'Nunito',sans-serif;font-weight:700;color:#999;}
-.step-label.active{color:var(--red);}
-.step-line{flex:1;height:2px;background:#e0ddd6;margin-bottom:16px;}
-.step-line.done{background:var(--red);}
-.form-section{background:#fff;border-radius:14px;padding:20px;border:1.5px solid #e8e4da;margin-bottom:16px;}
-.form-section h3{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-.form-section h3 i{color:var(--red);font-size:18px;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
-.form-row.full{grid-template-columns:1fr;}
-.form-group{display:flex;flex-direction:column;gap:4px;}
-.form-group label{font-size:11px;font-weight:700;font-family:'Nunito',sans-serif;color:#555;text-transform:uppercase;letter-spacing:.04em;}
-.form-group input,.form-group select{border:1.5px solid #ddd;border-radius:8px;padding:9px 12px;font-family:'Nunito Sans',sans-serif;font-size:13px;outline:none;transition:border .15s;background:#fff;}
-.form-group input:focus,.form-group select:focus{border-color:var(--red);}
-.pay-method{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
-.pay-opt{border:2px solid #ddd;border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:all .15s;}
-.pay-opt:hover{border-color:var(--red);}
-.pay-opt.selected{border-color:var(--red);background:#fff5f5;}
-.pay-opt i{font-size:22px;color:#555;display:block;margin-bottom:4px;}
-.pay-opt.selected i{color:var(--red);}
-.pay-opt span{font-size:10px;font-family:'Nunito',sans-serif;font-weight:700;color:#444;display:block;}
-.mini-summary{background:#fff;border-radius:14px;border:1.5px solid #e8e4da;padding:14px;position:sticky;top:80px;}
-.mini-summary h4{font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;margin-bottom:10px;padding-bottom:8px;border-bottom:1.5px solid #f0eee8;}
-.ms-item{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;color:#555;}
-.ms-item .n{font-weight:700;color:#222;}
-.ms-total{display:flex;justify-content:space-between;border-top:2px solid #1a1a1a;padding-top:10px;margin-top:8px;}
+/* ─── ORDER SUMMARY ─── */
+.osummary{background:#fff;border-radius:14px;border:1.5px solid var(--border);padding:18px;position:sticky;top:80px;}
+.os-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:16px;margin-bottom:14px;padding-bottom:12px;border-bottom:1.5px solid var(--border);}
+.os-row{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;}
+.os-row .lbl{color:var(--gray);}
+.os-row .val{font-weight:700;font-family:'Nunito',sans-serif;}
+.retiro-note{background:#fffbea;border:1.5px solid var(--yellow);border-radius:10px;padding:10px 12px;margin:12px 0;font-size:11px;color:var(--yellow-text);}
+.retiro-note strong{display:block;font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;margin-bottom:2px;}
+.os-total{display:flex;justify-content:space-between;border-top:2px solid var(--dark);padding-top:12px;margin-top:8px;}
+.os-total .lbl{font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;}
+.os-total .val{font-family:'Nunito',sans-serif;font-weight:900;font-size:21px;color:var(--red);}
+.pay-btn{width:100%;background:var(--red);color:#fff;border:none;padding:14px;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;border-radius:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:13px;transition:background .15s;}
+.pay-btn:hover{background:var(--red-dark);}
+.pay-btn:disabled{background:#ddd;cursor:default;}
+
+/* ─── CHECKOUT ─── */
+.checkout-layout{display:grid;grid-template-columns:1fr 280px;gap:20px;padding:20px 24px;align-items:start;}
+.step-track{display:flex;align-items:center;margin-bottom:24px;}
+.st-dot{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.st-circle{width:33px;height:33px;border-radius:50%;background:#e0ddd6;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;color:#aaa;transition:all .3s;}
+.st-circle.active{background:var(--red);color:#fff;box-shadow:0 0 0 4px rgba(227,30,36,.18);}
+.st-circle.done{background:var(--red);color:#fff;}
+.st-label{font-size:10px;font-family:'Nunito',sans-serif;font-weight:700;color:#bbb;}
+.st-label.active{color:var(--red);}
+.st-line{flex:1;height:2px;background:#e0ddd6;margin-bottom:16px;}
+.st-line.done{background:var(--red);}
+.form-card{background:#fff;border-radius:14px;padding:20px;border:1.5px solid var(--border);margin-bottom:14px;}
+.form-card h3{font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;margin-bottom:14px;display:flex;align-items:center;gap:8px;color:var(--dark);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.frow.full{grid-template-columns:1fr;}
+.fgrp{display:flex;flex-direction:column;gap:4px;}
+.fgrp label{font-size:10px;font-weight:700;font-family:'Nunito',sans-serif;color:#888;text-transform:uppercase;letter-spacing:.05em;}
+.fgrp input,.fgrp select{border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;font-family:'Nunito Sans',sans-serif;font-size:13px;outline:none;transition:border .15s;background:#fff;color:var(--dark);}
+.fgrp input:focus,.fgrp select:focus{border-color:var(--red);}
+.pay-opts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.popt{border:2px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:all .15s;}
+.popt:hover{border-color:var(--red);}
+.popt.sel{border-color:var(--red);background:var(--red-light);}
+.popt-ico{font-size:22px;display:block;margin-bottom:4px;}
+.popt span{font-size:10px;font-family:'Nunito',sans-serif;font-weight:700;color:#444;display:block;}
+.popt.sel span{color:var(--red);}
+.mini-sum{background:#fff;border-radius:14px;border:1.5px solid var(--border);padding:15px;position:sticky;top:80px;}
+.mini-sum h4{font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;margin-bottom:10px;padding-bottom:8px;border-bottom:1.5px solid var(--border);}
+.ms-item{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;color:var(--gray);}
+.ms-item .n{font-weight:700;color:var(--dark);}
+.ms-total{display:flex;justify-content:space-between;border-top:2px solid var(--dark);padding-top:10px;margin-top:6px;}
 .ms-total .l{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;}
 .ms-total .v{font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;color:var(--red);}
-.confirm-btn{width:100%;background:var(--red);color:#fff;border:none;padding:12px;font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;border-radius:10px;cursor:pointer;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:7px;transition:background .15s;}
+.confirm-btn{width:100%;background:var(--red);color:#fff;border:none;padding:13px;font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;margin-top:12px;transition:background .15s;}
 .confirm-btn:hover{background:var(--red-dark);}
+.confirm-btn.green-btn{background:var(--green);}
+.confirm-btn.green-btn:hover{background:#1b5e20;}
 
-/* SUCCESS */
-.success-view{text-align:center;padding:50px 20px;}
-.success-icon{width:80px;height:80px;background:#e8f5e9;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:40px;}
-.success-view h2{font-family:'Nunito',sans-serif;font-weight:900;font-size:26px;color:#2e7d32;margin-bottom:8px;}
-.success-view p{color:#666;font-size:14px;line-height:1.6;margin-bottom:24px;}
-.success-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:500px;margin:0 auto 28px;}
-.ss-box{background:#fff;border-radius:12px;padding:14px 10px;text-align:center;border:1.5px solid #e8e4da;}
-.ss-num{width:28px;height:28px;background:var(--red);border-radius:50%;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;}
+/* ─── SUCCESS ─── */
+.success-wrap{text-align:center;padding:60px 20px;}
+.success-icon{width:88px;height:88px;background:#e8f5e9;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:44px;}
+.success-wrap h2{font-family:'Nunito',sans-serif;font-weight:900;font-size:28px;color:var(--green);margin-bottom:8px;}
+.success-wrap p{color:var(--gray);font-size:14px;line-height:1.7;margin-bottom:26px;}
+.ss-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:480px;margin:0 auto 30px;}
+.ss-box{background:#fff;border-radius:12px;padding:14px 10px;border:1.5px solid var(--border);}
+.ss-num{width:28px;height:28px;background:var(--red);border-radius:50%;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;}
 .ss-box p{font-size:11px;color:#555;line-height:1.4;font-family:'Nunito',sans-serif;font-weight:700;}
-.btn-back{background:var(--red);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;cursor:pointer;}
-.how-section{background:#fff;border-radius:14px;padding:20px;margin-bottom:20px;}
-.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px;margin-top:14px;}
-.step-box{text-align:center;}
-.step-num{width:40px;height:40px;border-radius:50%;background:var(--red);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;}
-.step-ico{font-size:20px;color:var(--red);display:block;margin-bottom:5px;}
-.step-t{font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;margin-bottom:3px;}
-.step-d{font-size:11px;color:#777;line-height:1.4;}
-.retiro-banner-home{background:#fff;border:2px solid var(--yellow);border-radius:12px;padding:14px 16px;margin-bottom:20px;display:flex;align-items:center;gap:14px;}
-.retiro-ico-home{width:44px;height:44px;background:var(--yellow);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
-.retiro-text-home h3{font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;margin-bottom:3px;}
-.retiro-text-home p{font-size:12px;color:#666;}
+
+/* ─── FOOTER ─── */
+.footer{background:#1a1a1a;color:rgba(255,255,255,.65);padding:28px 24px 18px;margin-top:10px;}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:24px;margin-bottom:20px;}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr 1fr;}}
+.footer-brand{}
+.footer-logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;color:var(--red);margin-bottom:4px;}
+.footer-slogan{font-size:10px;color:var(--yellow);font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:10px;}
+.footer-desc{font-size:12px;line-height:1.6;}
+.footer-col h4{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:#fff;margin-bottom:10px;}
+.footer-col a{display:block;font-size:12px;color:rgba(255,255,255,.55);margin-bottom:6px;cursor:pointer;transition:color .15s;text-decoration:none;}
+.footer-col a:hover{color:var(--yellow);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:14px;text-align:center;font-size:11px;color:rgba(255,255,255,.3);}
+
+/* ─── UTILS ─── */
+.mb16{margin-bottom:16px;}
+.no-products{text-align:center;color:#ccc;padding:50px 20px;font-family:'Nunito',sans-serif;font-weight:700;font-size:15px;grid-column:1/-1;}
 </style>
 </head>
 <body>
 
-<div class="topbar">📦 PREVENTA MAYORISTA ACTIVA — Comprá online, pagá, retirá en punto fijo · Precios bajos SIEMPRE</div>
+<div class="topbar">📦 PREVENTA MAYORISTA ACTIVA — Comprá online · Pagá seguro · Retirá en punto fijo · Precios bajos SIEMPRE</div>
 
+<!-- NAVBAR -->
 <nav class="navbar">
-  <div class="logo" onclick="showView('home')">
-    <div class="logo-box">🤌</div>
+  <a class="logo" onclick="goHome()">
+    <div class="logo-badge">🤌</div>
     <div>
       <div class="logo-name">La Mano</div>
       <div class="logo-tag">Mayorista · Precios Bajos · Siempre</div>
     </div>
-  </div>
-  <div class="search-wrap">
-    <input type="text" id="searchInput" placeholder="Buscar productos... (yerba, aceite, fideos...)" oninput="filterProducts()">
-    <button onclick="showView('catalogo')"><i class="ti ti-search"></i></button>
+  </a>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Buscar productos... (ej: atún, coca-cola, fideos)" oninput="onSearch()">
+    <button onclick="goView('catalogo')">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
   </div>
   <div class="nav-right">
-    <button class="nav-ico-btn" onclick="showView('home')"><i class="ti ti-home"></i>Inicio</button>
-    <button class="nav-ico-btn" onclick="showView('catalogo')"><i class="ti ti-layout-grid"></i>Catálogo</button>
-    <button class="nav-ico-btn cart-btn-nav" onclick="showView('carrito')">
-      <i class="ti ti-shopping-cart"></i>Carrito
-      <span class="cart-badge" id="cartBadge">0</span>
+    <button class="nbtn" onclick="goHome()">
+      <svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Inicio
+    </button>
+    <button class="nbtn" onclick="goView('catalogo')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      Catálogo
+    </button>
+    <button class="nbtn cart-nbtn" onclick="goView('carrito')">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      Carrito
+      <span class="cart-count" id="cartCount">0</span>
     </button>
   </div>
 </nav>
 
+<!-- CATEGORY BAR -->
 <div class="catbar">
-  <div class="catitem active" onclick="showCat('Todos')">🛒 Todos</div>
-  <div class="catitem" onclick="showCat('Bebidas')">🧃 Bebidas</div>
-  <div class="catitem" onclick="showCat('Snacks')">🍫 Snacks</div>
-  <div class="catitem" onclick="showCat('Conservas')">🥫 Conservas</div>
-  <div class="catitem" onclick="showCat('Pastas/Cereales')">🍝 Pastas</div>
-  <div class="catitem" onclick="showCat('Lácteos')">🥛 Lácteos</div>
-  <div class="catitem" onclick="showCat('Condimentos')">🧂 Condimentos</div>
-  <div class="catitem" onclick="showCat('Limpieza')">🧴 Limpieza</div>
-  <div class="catitem" onclick="showCat('Snacks')">⭐ TOP 10</div>
+  <button class="catbtn active" onclick="filterCat('Todos')">🛒 Todos</button>
+  <button class="catbtn" onclick="filterCat('Bebidas')">🧃 Bebidas</button>
+  <button class="catbtn" onclick="filterCat('Snacks')">🍫 Snacks</button>
+  <button class="catbtn" onclick="filterCat('Conservas')">🥫 Conservas</button>
+  <button class="catbtn" onclick="filterCat('Pastas/Cereales')">🍝 Pastas y Cereales</button>
+  <button class="catbtn" onclick="filterCat('Lácteos')">🥛 Lácteos</button>
+  <button class="catbtn" onclick="filterCat('Condimentos')">🧂 Condimentos</button>
+  <button class="catbtn" onclick="filterCat('Limpieza')">🧴 Limpieza</button>
+  <button class="catbtn" onclick="filterCat('Congelados')">❄️ Congelados</button>
 </div>
 
-<!-- HOME VIEW -->
+<!-- ══ HOME ══ -->
 <div id="view-home" class="view active">
+  <!-- HERO -->
   <div class="hero">
-    <div class="hero-ghost">🤌</div>
-    <div class="hero-content">
+    <div class="hero-watermark">🤌</div>
+    <div class="hero-body">
       <div class="hero-pill">✦ Preventa mayorista activa esta semana</div>
-      <h1>Precios bajos,<br><span>siempre.</span></h1>
-      <p>Comprá por mayor, pagá online y retirá en punto fijo.<br>+140 productos disponibles.</p>
-      <div class="hero-btns">
-        <button class="btn-hero" onclick="showView('catalogo')"><i class="ti ti-shopping-bag"></i> Ver catálogo</button>
-        <button class="btn-hero2" onclick="document.getElementById('retiro-section').scrollIntoView({behavior:'smooth'})"><i class="ti ti-map-pin"></i> ¿Cómo funciona?</button>
+      <h1>Precios bajos,<br><em>siempre.</em></h1>
+      <p>Comprá por mayor, pagá online y retirá en nuestro punto fijo.<br>+140 productos disponibles — sin stock mínimo para arrancar.</p>
+      <div class="hero-ctas">
+        <button class="btn-yellow" onclick="goView('catalogo')">🛒 Ver catálogo completo</button>
+        <button class="btn-ghost" onclick="scrollToHow()">📍 ¿Cómo funciona?</button>
       </div>
     </div>
     <div class="hero-stats">
-      <div class="stat-box"><div class="stat-num">+140</div><div class="stat-label">productos</div></div>
-      <div class="stat-box"><div class="stat-num">35%</div><div class="stat-label">margen</div></div>
+      <div class="hstat"><div class="hstat-n">+140</div><div class="hstat-l">productos</div></div>
+      <div class="hstat"><div class="hstat-n">35%</div><div class="hstat-l">margen promedio</div></div>
+      <div class="hstat"><div class="hstat-n">3</div><div class="hstat-l">bodegas fuente</div></div>
     </div>
   </div>
+
+  <!-- YELLOW STRIP -->
   <div class="ystrip">
-    <div class="yitem"><i class="ti ti-cash"></i>Pago online seguro</div>
-    <div class="yitem"><i class="ti ti-map-pin"></i>Retiro en punto fijo</div>
-    <div class="yitem"><i class="ti ti-package"></i>Precio mayorista real</div>
-    <div class="yitem"><i class="ti ti-clock"></i>Preventa semanal</div>
+    <div class="yitem">
+      <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      Pago online seguro
+    </div>
+    <div class="yitem">
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Retiro en punto fijo
+    </div>
+    <div class="yitem">
+      <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      Precio mayorista real
+    </div>
+    <div class="yitem">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Preventa semanal
+    </div>
   </div>
-  <div class="main-pad">
-    <div id="retiro-section" class="retiro-banner-home">
-      <div class="retiro-ico-home">📍</div>
-      <div class="retiro-text-home">
+
+  <div class="pad">
+    <!-- RETIRO BANNER -->
+    <div class="retiro-banner">
+      <div class="retiro-ico">📍</div>
+      <div class="retiro-text">
         <h3>¿Cómo funciona La Mano?</h3>
-        <p>Elegís → Pagás online → Nosotros buscamos en bodega → Retirás en punto fijo. Sin sorpresas.</p>
+        <p>Elegís tus productos → Pagás online → Nosotros buscamos en bodega → Retirás en punto fijo. Sin sorpresas, sin despacho.</p>
       </div>
     </div>
-    <div class="sec-hdr"><div class="sec-title">Categorías</div><button class="see-all" onclick="showView('catalogo')">Ver todas <i class="ti ti-chevron-right"></i></button></div>
+
+    <!-- CATEGORÍAS -->
+    <div class="sec-hdr">
+      <div class="sec-title">Categorías</div>
+      <button class="link-btn" onclick="goView('catalogo')">Ver todas →</button>
+    </div>
     <div class="cat-grid">
-      <div class="cat-card" onclick="showCat('Bebidas')"><span class="ico">🧃</span><span class="nm">Bebidas</span></div>
-      <div class="cat-card" onclick="showCat('Snacks')"><span class="ico">🍫</span><span class="nm">Snacks</span></div>
-      <div class="cat-card" onclick="showCat('Conservas')"><span class="ico">🥫</span><span class="nm">Conservas</span></div>
-      <div class="cat-card" onclick="showCat('Pastas/Cereales')"><span class="ico">🍝</span><span class="nm">Pastas</span></div>
-      <div class="cat-card" onclick="showCat('Lácteos')"><span class="ico">🥛</span><span class="nm">Lácteos</span></div>
-      <div class="cat-card" onclick="showCat('Condimentos')"><span class="ico">🧂</span><span class="nm">Condimentos</span></div>
-      <div class="cat-card" onclick="showCat('Limpieza')"><span class="ico">🧴</span><span class="nm">Limpieza</span></div>
-      <div class="cat-card" onclick="showCat('Todos')"><span class="ico">⭐</span><span class="nm">TOP 10</span></div>
+      <div class="cat-card" onclick="filterCat('Bebidas')"><span class="ci">🧃</span><span class="cn">Bebidas</span></div>
+      <div class="cat-card" onclick="filterCat('Snacks')"><span class="ci">🍫</span><span class="cn">Snacks</span></div>
+      <div class="cat-card" onclick="filterCat('Conservas')"><span class="ci">🥫</span><span class="cn">Conservas</span></div>
+      <div class="cat-card" onclick="filterCat('Pastas/Cereales')"><span class="ci">🍝</span><span class="cn">Pastas y Cereales</span></div>
+      <div class="cat-card" onclick="filterCat('Lácteos')"><span class="ci">🥛</span><span class="cn">Lácteos</span></div>
+      <div class="cat-card" onclick="filterCat('Condimentos')"><span class="ci">🧂</span><span class="cn">Condimentos</span></div>
+      <div class="cat-card" onclick="filterCat('Limpieza')"><span class="ci">🧴</span><span class="cn">Limpieza</span></div>
+      <div class="cat-card" onclick="filterCat('Congelados')"><span class="ci">❄️</span><span class="cn">Congelados</span></div>
     </div>
-    <div class="sec-hdr"><div class="sec-title">⭐ Productos destacados</div><button class="see-all" onclick="showView('catalogo')">Ver todos <i class="ti ti-chevron-right"></i></button></div>
-    <div id="home-products" class="prod-grid"></div>
-    <div class="how-section">
-      <div class="sec-title" style="margin-bottom:14px">¿Cómo comprar?</div>
-      <div class="steps-grid">
-        <div class="step-box"><div class="step-num">1</div><i class="ti ti-shopping-cart step-ico"></i><div class="step-t">Elegís productos</div><div class="step-d">Navegás el catálogo y armás tu pedido</div></div>
-        <div class="step-box"><div class="step-num">2</div><i class="ti ti-credit-card step-ico"></i><div class="step-t">Pagás online</div><div class="step-d">Tarjeta, transferencia o efectivo digital</div></div>
-        <div class="step-box"><div class="step-num">3</div><i class="ti ti-building-warehouse step-ico"></i><div class="step-t">Buscamos en bodega</div><div class="step-d">Nosotros gestionamos el stock</div></div>
-        <div class="step-box"><div class="step-num">4</div><i class="ti ti-map-pin step-ico"></i><div class="step-t">Retirás en punto fijo</div><div class="step-d">Rápido, coordinado, sin colas</div></div>
+
+    <!-- TOP PRODUCTOS -->
+    <div class="sec-hdr">
+      <div class="sec-title">⭐ TOP Productos</div>
+      <button class="link-btn" onclick="goView('catalogo')">Ver todos →</button>
+    </div>
+    <div id="home-prods" class="prod-grid"></div>
+
+    <!-- CÓMO COMPRAR -->
+    <div class="how-box" id="how-section">
+      <div class="sec-title mb16">¿Cómo comprar en La Mano?</div>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><span class="step-ico">🛒</span><div class="step-t">Elegís tus productos</div><div class="step-d">Navegás el catálogo y armás tu pedido</div></div>
+        <div class="step"><div class="step-n">2</div><span class="step-ico">💳</span><div class="step-t">Pagás online</div><div class="step-d">Tarjeta, transferencia o efectivo digital</div></div>
+        <div class="step"><div class="step-n">3</div><span class="step-ico">🏭</span><div class="step-t">Buscamos en bodega</div><div class="step-d">Nosotros gestionamos el stock por vos</div></div>
+        <div class="step"><div class="step-n">4</div><span class="step-ico">📍</span><div class="step-t">Retirás en punto fijo</div><div class="step-d">Rápido, coordinado, sin colas</div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CATALOG VIEW -->
+<!-- ══ CATÁLOGO ══ -->
 <div id="view-catalogo" class="view">
-  <div class="main-pad">
-    <div class="sec-hdr" style="margin-bottom:12px">
+  <div class="pad">
+    <div class="sec-hdr" style="margin-bottom:12px;">
       <div class="sec-title" id="cat-title">Todo el catálogo</div>
-      <span id="prod-count" style="font-size:12px;color:#999;font-family:'Nunito',sans-serif;font-weight:700;"></span>
+      <span class="prod-count" id="prod-count"></span>
     </div>
-    <div class="filters-row" id="filters-row"></div>
-    <div id="catalog-products" class="prod-grid"></div>
+    <div class="filters" id="filters-row"></div>
+    <div id="catalog-prods" class="prod-grid"></div>
   </div>
 </div>
 
-<!-- CART VIEW -->
+<!-- ══ CARRITO ══ -->
 <div id="view-carrito" class="view">
   <div class="cart-layout">
     <div>
-      <div class="sec-title" style="margin-bottom:16px">Mi carrito</div>
-      <div id="cart-items-container"></div>
+      <div class="sec-title mb16">Mi carrito</div>
+      <div id="cart-container"></div>
     </div>
-    <div class="order-summary">
+    <div class="osummary">
       <div class="os-title">Resumen del pedido</div>
-      <div class="os-row"><span class="label">Subtotal</span><span class="val" id="os-subtotal">$0</span></div>
-      <div class="os-row"><span class="label">Descuento mayorista</span><span class="val" style="color:#2e7d32">Incluido</span></div>
-      <div class="retiro-info"><strong>📍 Retiro en punto fijo</strong>Te avisamos por WhatsApp cuando tu pedido esté listo para retirar.</div>
-      <div class="os-total"><span class="label">Total</span><span class="val" id="os-total">$0</span></div>
-      <button class="checkout-btn" id="checkout-btn" onclick="showView('checkout')"><i class="ti ti-lock"></i> Ir a pagar</button>
+      <div class="os-row"><span class="lbl">Productos</span><span class="val" id="os-items">0 items</span></div>
+      <div class="os-row"><span class="lbl">Subtotal</span><span class="val" id="os-sub">$0</span></div>
+      <div class="os-row"><span class="lbl">Descuento mayorista</span><span class="val" style="color:var(--green)">Incluido ✓</span></div>
+      <div class="retiro-note">
+        <strong>📍 Retiro en punto fijo</strong>
+        Te contactamos por WhatsApp al confirmar el pago para coordinar el retiro.
+      </div>
+      <div class="os-total"><span class="lbl">Total</span><span class="val" id="os-total">$0</span></div>
+      <button class="pay-btn" id="pay-btn" onclick="goView('checkout')">
+        🔒 Ir a pagar
+      </button>
     </div>
   </div>
 </div>
 
-<!-- CHECKOUT VIEW -->
+<!-- ══ CHECKOUT ══ -->
 <div id="view-checkout" class="view">
-  <div class="main-pad" style="max-width:860px;margin:0 auto;">
-    <div class="step-bar" style="margin-bottom:24px;">
-      <div class="step-dot"><div class="step-circle active" id="sc1">1</div><span class="step-label active">Datos</span></div>
-      <div class="step-line" id="sl1"></div>
-      <div class="step-dot"><div class="step-circle" id="sc2">2</div><span class="step-label" id="sl-label2">Pago</span></div>
-      <div class="step-line" id="sl2"></div>
-      <div class="step-dot"><div class="step-circle" id="sc3">3</div><span class="step-label" id="sl-label3">Confirmar</span></div>
+  <div style="padding:20px 24px 0;">
+    <div class="step-track">
+      <div class="st-dot"><div class="st-circle active" id="sc1">1</div><span class="st-label active" id="sl1">Datos</span></div>
+      <div class="st-line" id="line1"></div>
+      <div class="st-dot"><div class="st-circle" id="sc2">2</div><span class="st-label" id="sl2">Pago</span></div>
+      <div class="st-line" id="line2"></div>
+      <div class="st-dot"><div class="st-circle" id="sc3">3</div><span class="st-label" id="sl3">Confirmar</span></div>
     </div>
-    <div class="checkout-layout">
-      <div>
-        <!-- Step 1 -->
-        <div id="ck-step1">
-          <div class="form-section">
-            <h3><i class="ti ti-user"></i>Tus datos</h3>
-            <div class="form-row">
-              <div class="form-group"><label>Nombre</label><input type="text" placeholder="Tu nombre completo"></div>
-              <div class="form-group"><label>Teléfono / WhatsApp</label><input type="text" placeholder="+56 9 XXXX XXXX"></div>
-            </div>
-            <div class="form-row full">
-              <div class="form-group"><label>Email</label><input type="email" placeholder="tu@email.com"></div>
+  </div>
+  <div class="checkout-layout">
+    <div>
+      <!-- STEP 1 -->
+      <div id="ck1">
+        <div class="form-card">
+          <h3>👤 Tus datos de contacto</h3>
+          <div class="frow">
+            <div class="fgrp"><label>Nombre completo</label><input type="text" placeholder="Tu nombre"></div>
+            <div class="fgrp"><label>WhatsApp</label><input type="text" placeholder="+56 9 XXXX XXXX"></div>
+          </div>
+          <div class="frow full">
+            <div class="fgrp"><label>Email</label><input type="email" placeholder="tu@email.com"></div>
+          </div>
+          <div class="frow full">
+            <div class="fgrp"><label>Tipo de comprador</label>
+              <select>
+                <option>Comprador mayorista / almacén</option>
+                <option>Revendedor independiente</option>
+                <option>Compra personal en cantidad</option>
+              </select>
             </div>
           </div>
-          <div class="form-section">
-            <h3><i class="ti ti-map-pin"></i>Punto de retiro</h3>
-            <div style="background:#f8f7f3;border-radius:10px;padding:14px;display:flex;gap:12px;align-items:center;">
-              <div style="font-size:28px;">📍</div>
-              <div>
-                <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;margin-bottom:2px;">Punto fijo La Mano — Santiago</div>
-                <div style="font-size:12px;color:#777;">Se confirmará la dirección exacta por WhatsApp una vez procesado el pago.</div>
-                <div style="font-size:11px;color:#aaa;margin-top:4px;">⏱ Lunes a sábado · Horario a coordinar</div>
-              </div>
-            </div>
-          </div>
-          <button class="confirm-btn" onclick="nextStep(2)"><i class="ti ti-arrow-right"></i>Continuar al pago</button>
         </div>
-        <!-- Step 2 -->
-        <div id="ck-step2" style="display:none;">
-          <div class="form-section">
-            <h3><i class="ti ti-credit-card"></i>Método de pago</h3>
-            <div class="pay-method">
-              <div class="pay-opt selected" onclick="selectPay(this)"><i class="ti ti-credit-card"></i><span>Tarjeta</span></div>
-              <div class="pay-opt" onclick="selectPay(this)"><i class="ti ti-building-bank"></i><span>Transferencia</span></div>
-              <div class="pay-opt" onclick="selectPay(this)"><i class="ti ti-device-mobile"></i><span>Mercado Pago</span></div>
-            </div>
-            <div style="margin-top:16px;" id="card-fields">
-              <div class="form-row full"><div class="form-group"><label>Número de tarjeta</label><input type="text" placeholder="0000 0000 0000 0000"></div></div>
-              <div class="form-row">
-                <div class="form-group"><label>Vencimiento</label><input type="text" placeholder="MM/AA"></div>
-                <div class="form-group"><label>CVV</label><input type="text" placeholder="000"></div>
-              </div>
-              <div class="form-row full"><div class="form-group"><label>Nombre en tarjeta</label><input type="text" placeholder="Nombre completo"></div></div>
+        <div class="form-card">
+          <h3>📍 Punto de retiro</h3>
+          <div style="background:var(--light-gray);border-radius:10px;padding:14px;display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:26px;">📍</span>
+            <div>
+              <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;margin-bottom:3px;">Punto fijo La Mano — Santiago</div>
+              <div style="font-size:12px;color:var(--gray);line-height:1.5;">La dirección exacta se confirma por WhatsApp una vez procesado el pago. Lunes a sábado, horario coordinado según pedido.</div>
             </div>
           </div>
-          <button class="confirm-btn" onclick="nextStep(3)"><i class="ti ti-arrow-right"></i>Revisar pedido</button>
         </div>
-        <!-- Step 3 -->
-        <div id="ck-step3" style="display:none;">
-          <div class="form-section">
-            <h3><i class="ti ti-list-check"></i>Revisar y confirmar</h3>
-            <div id="ck-items-review" style="margin-bottom:16px;"></div>
-            <div style="background:#f8f7f3;border-radius:10px;padding:12px;font-size:12px;color:#555;line-height:1.7;">
-              ✅ Al confirmar, recibirás un mensaje de WhatsApp con los detalles del retiro.<br>
-              💳 El pago se procesa de forma segura.<br>
-              📦 Tu pedido queda confirmado una vez verificado el pago.
-            </div>
-          </div>
-          <button class="confirm-btn" onclick="showView('success')" style="background:#2e7d32;"><i class="ti ti-check"></i>Confirmar pedido</button>
-        </div>
+        <button class="confirm-btn" onclick="ckStep(2)">Continuar al pago →</button>
       </div>
-      <div class="mini-summary" id="mini-summary">
-        <h4>Tu pedido</h4>
-        <div id="ms-items"></div>
-        <div class="ms-total"><span class="l">Total</span><span class="v" id="ms-total-val">$0</span></div>
-        <div style="font-size:10px;color:#aaa;margin-top:8px;text-align:center;">🔒 Pago 100% seguro</div>
+      <!-- STEP 2 -->
+      <div id="ck2" style="display:none;">
+        <div class="form-card">
+          <h3>💳 Método de pago</h3>
+          <div class="pay-opts">
+            <div class="popt sel" onclick="selPay(this)"><span class="popt-ico">💳</span><span>Tarjeta</span></div>
+            <div class="popt" onclick="selPay(this)"><span class="popt-ico">🏦</span><span>Transferencia</span></div>
+            <div class="popt" onclick="selPay(this)"><span class="popt-ico">📱</span><span>Mercado Pago</span></div>
+          </div>
+          <div style="margin-top:16px;" id="card-fields">
+            <div class="frow full"><div class="fgrp"><label>Número de tarjeta</label><input type="text" placeholder="0000 0000 0000 0000"></div></div>
+            <div class="frow">
+              <div class="fgrp"><label>Vencimiento</label><input type="text" placeholder="MM/AA"></div>
+              <div class="fgrp"><label>CVV</label><input type="text" placeholder="000"></div>
+            </div>
+            <div class="frow full"><div class="fgrp"><label>Nombre en tarjeta</label><input type="text" placeholder="Como aparece en la tarjeta"></div></div>
+          </div>
+        </div>
+        <button class="confirm-btn" onclick="ckStep(3)">Revisar pedido →</button>
       </div>
+      <!-- STEP 3 -->
+      <div id="ck3" style="display:none;">
+        <div class="form-card">
+          <h3>✅ Revisar y confirmar</h3>
+          <div id="ck3-items" style="margin-bottom:16px;"></div>
+          <div style="background:var(--light-gray);border-radius:10px;padding:13px;font-size:12px;color:var(--gray);line-height:1.8;">
+            ✅ Al confirmar, recibirás un WhatsApp con los detalles del retiro.<br>
+            💳 El pago se procesa de forma segura.<br>
+            📦 Pedido confirmado una vez verificado el pago.
+          </div>
+        </div>
+        <button class="confirm-btn green-btn" onclick="goView('success')">✅ Confirmar y pagar</button>
+      </div>
+    </div>
+    <!-- MINI SUMMARY -->
+    <div class="mini-sum" id="mini-sum">
+      <h4>Tu pedido</h4>
+      <div id="ms-items"></div>
+      <div class="ms-total"><span class="l">Total</span><span class="v" id="ms-total">$0</span></div>
+      <div style="font-size:10px;color:#ccc;text-align:center;margin-top:8px;">🔒 Pago 100% seguro</div>
     </div>
   </div>
 </div>
 
-<!-- SUCCESS VIEW -->
+<!-- ══ SUCCESS ══ -->
 <div id="view-success" class="view">
-  <div class="success-view">
+  <div class="success-wrap">
     <div class="success-icon">✅</div>
     <h2>¡Pedido confirmado!</h2>
-    <p>Gracias por tu compra en La Mano del Mayorista.<br>En breve te contactamos por WhatsApp con los detalles del retiro.</p>
-    <div class="success-steps">
+    <p>Gracias por comprar en La Mano del Mayorista.<br>En breve te contactamos por WhatsApp con los detalles del retiro.</p>
+    <div class="ss-grid">
       <div class="ss-box"><div class="ss-num">1</div><p>Verificamos tu pago en las próximas horas</p></div>
       <div class="ss-box"><div class="ss-num">2</div><p>Buscamos tus productos en bodega</p></div>
       <div class="ss-box"><div class="ss-num">3</div><p>Te avisamos por WhatsApp para el retiro</p></div>
     </div>
-    <button class="btn-back" onclick="resetAndGoHome()">🤌 Volver al inicio</button>
+    <button class="btn-yellow" onclick="resetHome()">🤌 Volver al inicio</button>
   </div>
 </div>
 
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">🤌 La Mano</div>
+      <div class="footer-slogan">Mayorista · Precios bajos · Siempre</div>
+      <p class="footer-desc">Tu aliado mayorista para almacenes, revendedores y compradores por mayor en Santiago.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categorías</h4>
+      <a onclick="filterCat('Bebidas')">Bebidas</a>
+      <a onclick="filterCat('Snacks')">Snacks</a>
+      <a onclick="filterCat('Conservas')">Conservas</a>
+      <a onclick="filterCat('Pastas/Cereales')">Pastas y Cereales</a>
+      <a onclick="filterCat('Lácteos')">Lácteos</a>
+    </div>
+    <div class="footer-col">
+      <h4>Ayuda</h4>
+      <a onclick="scrollToHow()">¿Cómo comprar?</a>
+      <a>Punto de retiro</a>
+      <a onclick="goView('carrito')">Mis pedidos</a>
+      <a>Contacto</a>
+    </div>
+    <div class="footer-col">
+      <h4>Seguinos</h4>
+      <a>📸 Instagram</a>
+      <a>💬 WhatsApp</a>
+      <a>👍 Facebook</a>
+      <a>🎵 TikTok</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 La Mano del Mayorista · Todos los derechos reservados · Santiago, Chile</div>
+</footer>
+
 <script>
+// ─── CATÁLOGO REAL ───
 const PRODUCTS = [
-  {id:1,name:'Coca-Cola Mini',brand:'Coca-Cola',content:'250ml x 24',cat:'Bebidas',price:890,pack:'Caja x 24 un.',emoji:'🥤',badge:'TOP 1',badgeType:'yellow'},
-  {id:2,name:'Score Water sin gas',brand:'Score',content:'500ml x 12',cat:'Bebidas',price:490,pack:'Pack x 12 un.',emoji:'💧',badge:'HOT',badgeType:'red'},
-  {id:3,name:'Crush Naranja',brand:'Crush',content:'350ml x 12',cat:'Bebidas',price:690,pack:'Pack x 12 un.',emoji:'🧡',badge:'',badgeType:''},
-  {id:4,name:'Jugo en polvo Zuko',brand:'Zuko',content:'Display x 24',cat:'Bebidas',price:290,pack:'Display x 24 un.',emoji:'🧃',badge:'NUEVO',badgeType:'red'},
-  {id:5,name:'Sprim Néctar',brand:'Del Valle',content:'Pack x 6',cat:'Bebidas',price:590,pack:'Pack x 6 un.',emoji:'🍊',badge:'',badgeType:''},
-  {id:6,name:'Kapo cajita',brand:'Kapo',content:'Display x 32',cat:'Bebidas',price:350,pack:'Display x 32',emoji:'🥭',badge:'',badgeType:''},
-  {id:7,name:'Doritos',brand:'Frito-Lay',content:'Bolsa 145g',cat:'Snacks',price:990,pack:'Caja x 12 un.',emoji:'🌽',badge:'TOP 3',badgeType:'yellow'},
-  {id:8,name:'Bimbo Zoo',brand:'Bimbo',content:'Display x 24',cat:'Snacks',price:490,pack:'Display x 24',emoji:'🐻',badge:'',badgeType:''},
-  {id:9,name:'Maní King sal',brand:'Evercrisp',content:'145g x 12',cat:'Snacks',price:650,pack:'Caja x 12 un.',emoji:'🥜',badge:'',badgeType:''},
-  {id:10,name:'Takis',brand:'Barcel',content:'Bolsa x 12',cat:'Snacks',price:890,pack:'Caja x 12 un.',emoji:'🌶️',badge:'POPULAR',badgeType:'red'},
-  {id:11,name:'Oreo',brand:'Mondelez',content:'Pack x 12',cat:'Snacks',price:750,pack:'Pack x 12 un.',emoji:'🍪',badge:'',badgeType:''},
-  {id:12,name:'Pa Rolls Naranja',brand:'Calaf',content:'Display x 20',cat:'Snacks',price:420,pack:'Display x 20',emoji:'🍬',badge:'',badgeType:''},
-  {id:13,name:'Atún en aceite San José',brand:'San José',content:'170g x 12',cat:'Conservas',price:1290,pack:'Caja x 12 un.',emoji:'🐟',badge:'TOP 5',badgeType:'yellow'},
-  {id:14,name:'Durazno en mitades',brand:'Esmeralda',content:'425g x 12',cat:'Conservas',price:890,pack:'Caja x 12 un.',emoji:'🍑',badge:'',badgeType:''},
-  {id:15,name:'Porotos negros',brand:'Wasil',content:'425g x 12',cat:'Conservas',price:690,pack:'Caja x 12 un.',emoji:'🫘',badge:'',badgeType:''},
-  {id:16,name:'Cholgas al natural',brand:'Angelmo',content:'Pack x 12',cat:'Conservas',price:1490,pack:'Caja x 12 un.',emoji:'🦪',badge:'',badgeType:''},
-  {id:17,name:'Espárragos',brand:'Del Valle',content:'Pack x 12',cat:'Conservas',price:990,pack:'Caja x 12 un.',emoji:'🥦',badge:'',badgeType:''},
-  {id:18,name:'Spaghetti N°5',brand:'Máxima',content:'500g x 20',cat:'Pastas/Cereales',price:590,pack:'Caja x 20 un.',emoji:'🍝',badge:'',badgeType:''},
-  {id:19,name:'Fideos vaso carne',brand:'Don Vittorio',content:'Pack x 12',cat:'Pastas/Cereales',price:790,pack:'Pack x 12 un.',emoji:'🍜',badge:'',badgeType:''},
-  {id:20,name:'Lasaña',brand:'Carozzi',content:'Pack x 10',cat:'Pastas/Cereales',price:850,pack:'Pack x 10 un.',emoji:'🍲',badge:'',badgeType:''},
-  {id:21,name:'Avena instantánea',brand:'Miraflores',content:'500g x 12',cat:'Pastas/Cereales',price:690,pack:'Pack x 12 un.',emoji:'🌾',badge:'',badgeType:''},
-  {id:22,name:'Milo en polvo',brand:'Nestlé',content:'400g x 6',cat:'Pastas/Cereales',price:2490,pack:'Pack x 6 un.',emoji:'🍫',badge:'',badgeType:''},
-  {id:23,name:'Leche entera 1L',brand:'Colun',content:'1L x 12',cat:'Lácteos',price:1090,pack:'Caja x 12 un.',emoji:'🥛',badge:'TOP 7',badgeType:'yellow'},
-  {id:24,name:'Leche sin lactosa',brand:'Surlat',content:'1L x 12',cat:'Lácteos',price:1290,pack:'Caja x 12 un.',emoji:'🥛',badge:'',badgeType:''},
-  {id:25,name:'Leche condensada',brand:'Nido',content:'397g x 12',cat:'Lácteos',price:1490,pack:'Caja x 12 un.',emoji:'🍯',badge:'',badgeType:''},
-  {id:26,name:'Margarina',brand:'Soprol',content:'500g x 12',cat:'Lácteos',price:890,pack:'Pack x 12 un.',emoji:'🧈',badge:'',badgeType:''},
-  {id:27,name:'Mayonesa Real',brand:'Kraft',content:'789g x 6',cat:'Condimentos',price:2190,pack:'Pack x 6 un.',emoji:'🫙',badge:'',badgeType:''},
-  {id:28,name:"Mayonesa Hellmann's",brand:"Hellmann's",content:'6L',cat:'Condimentos',price:3990,pack:'Bidón x 1',emoji:'🫙',badge:'',badgeType:''},
-  {id:29,name:'Ketchup Heinz',brand:'Heinz',content:'Pack x 6',cat:'Condimentos',price:1890,pack:'Pack x 6 un.',emoji:'🍅',badge:'',badgeType:''},
-  {id:30,name:'Salsa tomate Di Paolo',brand:'Di Paolo',content:'Doypack x 12',cat:'Condimentos',price:490,pack:'Pack x 12 un.',emoji:'🫙',badge:'HOT',badgeType:'red'},
-  {id:31,name:'Nescafé',brand:'Nestlé',content:'Pack x 12',cat:'Condimentos',price:1990,pack:'Pack x 12',emoji:'☕',badge:'',badgeType:''},
-  {id:32,name:'Té Supremo Ceylán',brand:'Supremo',content:'Display x 20',cat:'Condimentos',price:590,pack:'Display x 20',emoji:'🫖',badge:'',badgeType:''},
-  {id:33,name:'Mermelada frambuesa',brand:'Watts',content:'Pack x 12',cat:'Condimentos',price:890,pack:'Pack x 12',emoji:'🍓',badge:'',badgeType:''},
-  {id:34,name:'Ají molido',brand:'Traversi',content:'Pack x 12',cat:'Condimentos',price:590,pack:'Pack x 12',emoji:'🌶️',badge:'',badgeType:''},
-  {id:35,name:'Detergente líquido',brand:'La Mano',content:'1L x 12',cat:'Limpieza',price:990,pack:'Caja x 12 un.',emoji:'🧴',badge:'',badgeType:''},
-  {id:36,name:'Papel higiénico',brand:'Elite',content:'48 rollos',cat:'Limpieza',price:990,pack:'Pack x 48',emoji:'🧻',badge:'TOP 9',badgeType:'yellow'},
+  // BEBIDAS
+  {id:1,name:'Coca-Cola Mini',brand:'Coca-Cola',content:'250ml',cat:'Bebidas',cost:250,price:500,pack:12,packLabel:'Caja x 12 un.',emoji:'🥤',badge:'TOP 1',bt:'yellow'},
+  {id:2,name:'Score Water sin gas',brand:'Score',content:'500ml',cat:'Bebidas',cost:299,price:500,pack:24,packLabel:'Pack x 24 un.',emoji:'💧',badge:'HOT',bt:'red'},
+  {id:3,name:'Score Water con gas',brand:'Score',content:'500ml',cat:'Bebidas',cost:299,price:500,pack:24,packLabel:'Pack x 24 un.',emoji:'💧',badge:'',bt:''},
+  {id:4,name:'Crush Naranja',brand:'Crush',content:'350ml',cat:'Bebidas',cost:299,price:490,pack:12,packLabel:'Pack x 12 un.',emoji:'🧡',badge:'',bt:''},
+  {id:5,name:'Kapo cajita',brand:'Kapo',content:'200ml',cat:'Bebidas',cost:350,price:490,pack:32,packLabel:'Display x 32',emoji:'🥭',badge:'',bt:''},
+  {id:6,name:'Zuko sobre',brand:'Zuko',content:'Display x 24',cat:'Bebidas',cost:200,price:290,pack:24,packLabel:'Display x 24 un.',emoji:'🧃',badge:'NUEVO',bt:'red'},
+  {id:7,name:'Sprim Néctar',brand:'Del Valle',content:'pack x 6',cat:'Bebidas',cost:400,price:590,pack:6,packLabel:'Pack x 6 un.',emoji:'🍊',badge:'',bt:''},
+  // SNACKS
+  {id:8,name:'Inkat Crunch',brand:'Calaf',content:'80g',cat:'Snacks',cost:350,price:499,pack:21,packLabel:'Caja x 21 un.',emoji:'🍿',badge:'TOP 3',bt:'yellow'},
+  {id:9,name:'Bimbo Zoo',brand:'Ambrosoli',content:'98g',cat:'Snacks',cost:750,price:1000,pack:12,packLabel:'Display x 12 un.',emoji:'🐻',badge:'',bt:''},
+  {id:10,name:'Doritos Clásico',brand:'Frito-Lay',content:'145g',cat:'Snacks',cost:750,price:990,pack:16,packLabel:'Caja x 16 un.',emoji:'🌽',badge:'POPULAR',bt:'red'},
+  {id:11,name:'Papas Caseras',brand:'Marco Polo',content:'140g',cat:'Snacks',cost:750,price:938,pack:12,packLabel:'Pack x 12 un.',emoji:'🥔',badge:'',bt:''},
+  {id:12,name:'Papas Americano',brand:'Marco Polo',content:'150g',cat:'Snacks',cost:750,price:964,pack:14,packLabel:'Pack x 14 un.',emoji:'🥔',badge:'',bt:''},
+  {id:13,name:'Papas Barbeque',brand:'Marco Polo',content:'140g',cat:'Snacks',cost:750,price:938,pack:12,packLabel:'Pack x 12 un.',emoji:'🥔',badge:'',bt:''},
+  {id:14,name:'Gato Late',brand:'Evercrisp',content:'200g',cat:'Snacks',cost:1650,price:1850,pack:10,packLabel:'Caja x 10 un.',emoji:'🍿',badge:'',bt:''},
+  {id:15,name:'Traga Traga',brand:'Evercrisp',content:'200g',cat:'Snacks',cost:1650,price:1850,pack:10,packLabel:'Caja x 10 un.',emoji:'🍿',badge:'',bt:''},
+  {id:16,name:'Chip Pop',brand:'Evercrisp',content:'200g',cat:'Snacks',cost:1650,price:1850,pack:10,packLabel:'Caja x 10 un.',emoji:'🍿',badge:'',bt:''},
+  {id:17,name:'Cabritas',brand:'Evercrisp',content:'250g',cat:'Snacks',cost:1650,price:1850,pack:10,packLabel:'Caja x 10 un.',emoji:'🍿',badge:'',bt:''},
+  {id:18,name:'Takis',brand:'Barcel',content:'varios',cat:'Snacks',cost:750,price:990,pack:12,packLabel:'Caja x 12 un.',emoji:'🌶️',badge:'',bt:''},
+  {id:19,name:'Oreo',brand:'Mondelez',content:'119g',cat:'Snacks',cost:600,price:790,pack:12,packLabel:'Pack x 12 un.',emoji:'🍪',badge:'',bt:''},
+  {id:20,name:'Frac Clásica',brand:'Costa',content:'110g',cat:'Snacks',cost:524,price:600,pack:36,packLabel:'Caja x 36 un.',emoji:'🍪',badge:'',bt:''},
+  {id:21,name:'Galleta Mantequilla',brand:'Costa',content:'140g',cat:'Snacks',cost:631,price:750,pack:24,packLabel:'Caja x 24 un.',emoji:'🍪',badge:'',bt:''},
+  {id:22,name:'Club Social',brand:'Mondelez',content:'pack x 3',cat:'Snacks',cost:800,price:1000,pack:12,packLabel:'Pack x 12 un.',emoji:'🍘',badge:'',bt:''},
+  {id:23,name:'Pa Rolls Naranja',brand:'Calaf',content:'80g',cat:'Snacks',cost:350,price:499,pack:21,packLabel:'Display x 21 un.',emoji:'🍬',badge:'',bt:''},
+  // CONSERVAS
+  {id:24,name:'Lomo Atún en aceite',brand:'San José',content:'170g',cat:'Conservas',cost:1160,price:1350,pack:48,packLabel:'Caja x 48 un.',emoji:'🐟',badge:'TOP 5',bt:'yellow'},
+  {id:25,name:'Lomo Atún en agua',brand:'De Reyes',content:'170g',cat:'Conservas',cost:760,price:950,pack:24,packLabel:'Caja x 24 un.',emoji:'🐟',badge:'',bt:''},
+  {id:26,name:'Lomo Atún en agua',brand:'Misol',content:'170g',cat:'Conservas',cost:813,price:990,pack:24,packLabel:'Caja x 24 un.',emoji:'🐟',badge:'',bt:''},
+  {id:27,name:'Lomo Atún en aceite',brand:'Misol',content:'170g',cat:'Conservas',cost:813,price:990,pack:24,packLabel:'Caja x 24 un.',emoji:'🐟',badge:'',bt:''},
+  {id:28,name:'Jurel',brand:'San José',content:'425g',cat:'Conservas',cost:1765,price:1990,pack:24,packLabel:'Caja x 24 un.',emoji:'🐠',badge:'',bt:''},
+  {id:29,name:'Durazno en mitades',brand:'Esmeralda',content:'425g',cat:'Conservas',cost:856,price:1050,pack:24,packLabel:'Caja x 24 un.',emoji:'🍑',badge:'',bt:''},
+  {id:30,name:'Durazno en cubitos',brand:'Pura Vida',content:'460g',cat:'Conservas',cost:1050,price:1250,pack:24,packLabel:'Caja x 24 un.',emoji:'🍑',badge:'',bt:''},
+  {id:31,name:'Leche condensada',brand:'Nestlé',content:'397g',cat:'Conservas',cost:1445,price:1690,pack:48,packLabel:'Caja x 48 un.',emoji:'🍯',badge:'',bt:''},
+  {id:32,name:'Crema de Leche',brand:'Nestlé',content:'157g',cat:'Conservas',cost:892,price:1090,pack:24,packLabel:'Caja x 24 un.',emoji:'🥛',badge:'',bt:''},
+  {id:33,name:'Crema de Leche',brand:'Nestlé',content:'236g',cat:'Conservas',cost:1277,price:1490,pack:24,packLabel:'Caja x 24 un.',emoji:'🥛',badge:'',bt:''},
+  {id:34,name:'Cream of Coconut',brand:'Roland',content:'425g',cat:'Conservas',cost:390,price:550,pack:24,packLabel:'Caja x 24 un.',emoji:'🥥',badge:'',bt:''},
+  {id:35,name:'Espárragos',brand:'varios',content:'lata mediana',cat:'Conservas',cost:900,price:1190,pack:12,packLabel:'Caja x 12 un.',emoji:'🥦',badge:'',bt:''},
+  {id:36,name:'Fondos de alcachofas',brand:'varios',content:'lata',cat:'Conservas',cost:900,price:1190,pack:12,packLabel:'Caja x 12 un.',emoji:'🫙',badge:'',bt:''},
+  {id:37,name:'Porotos negros',brand:'Wasil',content:'425g',cat:'Conservas',cost:500,price:690,pack:24,packLabel:'Caja x 24 un.',emoji:'🫘',badge:'',bt:''},
+  {id:38,name:'Salsa tomate',brand:'Di Paolo',content:'doypack',cat:'Conservas',cost:180,price:290,pack:12,packLabel:'Pack x 12 un.',emoji:'🍅',badge:'HOT',bt:'red'},
+  // PASTAS / CEREALES
+  {id:39,name:'Spaghetti N°5',brand:'Máxima',content:'500g',cat:'Pastas/Cereales',cost:300,price:490,pack:20,packLabel:'Caja x 20 un.',emoji:'🍝',badge:'TOP 7',bt:'yellow'},
+  {id:40,name:'Fideos instantáneos',brand:'Misol',content:'65g',cat:'Pastas/Cereales',cost:401,price:550,pack:12,packLabel:'Pack x 12 un.',emoji:'🍜',badge:'',bt:''},
+  {id:41,name:'Fideos vaso carne',brand:'Don Vittorio',content:'varios',cat:'Pastas/Cereales',cost:700,price:950,pack:12,packLabel:'Pack x 12 un.',emoji:'🍜',badge:'',bt:''},
+  {id:42,name:'Lasaña',brand:'Carozzi',content:'pack',cat:'Pastas/Cereales',cost:700,price:950,pack:10,packLabel:'Pack x 10 un.',emoji:'🍲',badge:'',bt:''},
+  {id:43,name:'Cereal Milo',brand:'Nestlé',content:'pack',cat:'Pastas/Cereales',cost:2400,price:2990,pack:12,packLabel:'Caja x 12 un.',emoji:'🍫',badge:'',bt:''},
+  {id:44,name:'Cereal Trix',brand:'Nestlé',content:'700g',cat:'Pastas/Cereales',cost:3745,price:4490,pack:16,packLabel:'Caja x 16 un.',emoji:'🌈',badge:'',bt:''},
+  {id:45,name:'Cereal Cookie Crisp',brand:'Nestlé',content:'310g',cat:'Pastas/Cereales',cost:1000,price:1490,pack:18,packLabel:'Caja x 18 un.',emoji:'🍪',badge:'',bt:''},
+  {id:46,name:'Avena instantánea',brand:'Miraflores',content:'500g',cat:'Pastas/Cereales',cost:600,price:850,pack:12,packLabel:'Pack x 12 un.',emoji:'🌾',badge:'',bt:''},
+  {id:47,name:'Puré de papas',brand:'Maggi',content:'pack',cat:'Pastas/Cereales',cost:700,price:990,pack:12,packLabel:'Pack x 12 un.',emoji:'🥔',badge:'',bt:''},
+  // LÁCTEOS
+  {id:48,name:'Leche entera 1L',brand:'Colun',content:'1L',cat:'Lácteos',cost:800,price:1090,pack:12,packLabel:'Caja x 12 un.',emoji:'🥛',badge:'TOP 9',bt:'yellow'},
+  {id:49,name:'Leche sin lactosa',brand:'Surlat',content:'1L',cat:'Lácteos',cost:900,price:1250,pack:12,packLabel:'Caja x 12 un.',emoji:'🥛',badge:'',bt:''},
+  {id:50,name:'Leche entera',brand:'Pitrufquén',content:'1L',cat:'Lácteos',cost:750,price:990,pack:12,packLabel:'Caja x 12 un.',emoji:'🥛',badge:'',bt:''},
+  {id:51,name:'Margarina',brand:'Soprol',content:'500g',cat:'Lácteos',cost:700,price:990,pack:12,packLabel:'Pack x 12 un.',emoji:'🧈',badge:'',bt:''},
+  {id:52,name:'Margarina',brand:'Bonella',content:'500g',cat:'Lácteos',cost:700,price:990,pack:12,packLabel:'Pack x 12 un.',emoji:'🧈',badge:'',bt:''},
+  {id:53,name:'Queso laminado',brand:'La Vaquita',content:'pack',cat:'Lácteos',cost:900,price:1250,pack:12,packLabel:'Pack x 12 un.',emoji:'🧀',badge:'',bt:''},
+  {id:54,name:'Tortillas',brand:'Pancho Villa',content:'pack',cat:'Lácteos',cost:700,price:990,pack:12,packLabel:'Pack x 12 un.',emoji:'🫓',badge:'',bt:''},
+  // CONDIMENTOS
+  {id:55,name:'Mayonesa Real',brand:'Kraft',content:'789g',cat:'Condimentos',cost:5457,price:5990,pack:12,packLabel:'Pack x 12 un.',emoji:'🫙',badge:'',bt:''},
+  {id:56,name:"Mayonesa Hellmann's",brand:"Hellmann's",content:'630g',cat:'Condimentos',cost:1766,price:2190,pack:12,packLabel:'Pack x 12 un.',emoji:'🫙',badge:'',bt:''},
+  {id:57,name:'Ketchup Real',brand:'Kraft',content:'850g',cat:'Condimentos',cost:1750,price:2190,pack:12,packLabel:'Pack x 12 un.',emoji:'🍅',badge:'',bt:''},
+  {id:58,name:'Ketchup',brand:'Heinz',content:'pack',cat:'Condimentos',cost:1500,price:1990,pack:12,packLabel:'Pack x 12 un.',emoji:'🍅',badge:'',bt:''},
+  {id:59,name:'Sal de mesa',brand:'Doña Eulalia',content:'1kg',cat:'Condimentos',cost:280,price:680,pack:10,packLabel:'Pack x 10 un.',emoji:'🧂',badge:'MARGEN',bt:'green'},
+  {id:60,name:'Sal yodada',brand:'Lobos',content:'1kg',cat:'Condimentos',cost:461,price:761,pack:10,packLabel:'Pack x 10 un.',emoji:'🧂',badge:'',bt:''},
+  {id:61,name:'Stevia',brand:'Daily',content:'270ml',cat:'Condimentos',cost:2295,price:2690,pack:36,packLabel:'Pack x 36 un.',emoji:'🍃',badge:'',bt:''},
+  {id:62,name:'Azúcar light',brand:'Ianza',content:'500g',cat:'Condimentos',cost:1337,price:1690,pack:20,packLabel:'Pack x 20 un.',emoji:'🍬',badge:'',bt:''},
+  {id:63,name:'Mermelada durazno',brand:'Vivo',content:'175g',cat:'Condimentos',cost:803,price:1050,pack:20,packLabel:'Pack x 20 un.',emoji:'🍑',badge:'',bt:''},
+  {id:64,name:'Mermelada frambuesa',brand:'Vivo',content:'175g',cat:'Condimentos',cost:803,price:1050,pack:20,packLabel:'Pack x 20 un.',emoji:'🍓',badge:'',bt:''},
+  {id:65,name:'Mermelada durazno',brand:'Ambrosoli',content:'200g',cat:'Condimentos',cost:535,price:750,pack:20,packLabel:'Pack x 20 un.',emoji:'🍑',badge:'',bt:''},
+  {id:66,name:'Nescafé',brand:'Nestlé',content:'pack',cat:'Condimentos',cost:1500,price:1990,pack:12,packLabel:'Pack x 12 un.',emoji:'☕',badge:'',bt:''},
+  {id:67,name:'Té Supremo Ceylán',brand:'Supremo',content:'200g',cat:'Condimentos',cost:4098,price:4990,pack:10,packLabel:'Pack x 10 un.',emoji:'🫖',badge:'',bt:''},
+  {id:68,name:'Ají molido',brand:'Traversi',content:'pack',cat:'Condimentos',cost:500,price:750,pack:12,packLabel:'Pack x 12 un.',emoji:'🌶️',badge:'',bt:''},
+  // CONGELADOS / LIMPIEZA
+  {id:69,name:'Alitas de pollo',brand:'Sadia',content:'pack',cat:'Congelados',cost:3000,price:3990,pack:6,packLabel:'Pack x 6 un.',emoji:'🍗',badge:'',bt:''},
+  {id:70,name:'Nuggets de pollo',brand:'varios',content:'pack',cat:'Congelados',cost:2500,price:3290,pack:6,packLabel:'Pack x 6 un.',emoji:'🍗',badge:'',bt:''},
+  {id:71,name:'Hamburguesa Super Beef',brand:'Mont Blanc',content:'pack',cat:'Congelados',cost:2800,price:3690,pack:6,packLabel:'Pack x 6 un.',emoji:'🍔',badge:'',bt:''},
+  {id:72,name:'Espinacas congeladas',brand:'varios',content:'pack',cat:'Congelados',cost:700,price:990,pack:12,packLabel:'Pack x 12 un.',emoji:'🥬',badge:'',bt:''},
+  {id:73,name:'Maní King salado',brand:'Evercrisp',content:'145g',cat:'Snacks',cost:590,price:790,pack:20,packLabel:'Pack x 20 un.',emoji:'🥜',badge:'',bt:''},
+  {id:74,name:'Maní tostado sin sal',brand:'Evercrisp',content:'145g',cat:'Snacks',cost:590,price:790,pack:20,packLabel:'Pack x 20 un.',emoji:'🥜',badge:'',bt:''},
+  {id:75,name:'Maní tostado sin sal',brand:'Evercrisp',content:'360g',cat:'Snacks',cost:1290,price:1590,pack:15,packLabel:'Pack x 15 un.',emoji:'🥜',badge:'',bt:''},
 ];
 
 let cart = {};
-let currentCat = 'Todos';
-let searchQuery = '';
+let activeCat = 'Todos';
+let searchQ = '';
 
-function formatPrice(p){return '$'+p.toLocaleString('es-CL');}
+const fmt = n => '$' + n.toLocaleString('es-CL');
 
-function renderProductCard(p, containerId){
-  const inCart = cart[p.id]||0;
-  return `<div class="prod-card">
-    <div class="prod-img">${p.emoji}${p.badge?`<span class="pbadge ${p.badgeType}">${p.badge}</span>`:''}</div>
-    <div class="prod-info">
-      <div class="prod-name">${p.name}</div>
-      <div class="prod-sub">${p.brand}</div>
-      <div class="prod-price">${formatPrice(p.price)} <span>/ un.</span></div>
-      <div class="prod-pack">${p.pack}</div>
+// ─── RENDER PRODUCT CARD ───
+function prodCard(p) {
+  const inCart = cart[p.id] || 0;
+  const margin = Math.round(((p.price - p.cost) / p.price) * 100);
+  return `<div class="pcard">
+    <div class="pcard-img">${p.emoji}${p.badge ? `<span class="pbadge ${p.bt}">${p.badge}</span>` : ''}</div>
+    <div class="pcard-body">
+      <div class="pcard-brand">${p.brand}</div>
+      <div class="pcard-name">${p.name}</div>
+      <div class="pcard-pack">${p.packLabel} · ${p.content}</div>
+      <div class="pcard-price">${fmt(p.price)} <span class="pcard-unit">/ un.</span></div>
+      <div class="pcard-total">Pack total: ${fmt(p.price * p.pack)}</div>
     </div>
-    <button class="add-btn ${inCart>0?'added':''}" onclick="addToCart(${p.id})">
-      <i class="ti ti-${inCart>0?'check':'plus'}"></i> ${inCart>0?'Agregado ('+inCart+')':'Agregar'}
+    <button class="add-btn ${inCart ? 'added' : ''}" onclick="addCart(${p.id})">
+      ${inCart ? `✓ Agregado (${inCart})` : '+ Agregar al carrito'}
     </button>
   </div>`;
 }
 
-function renderProducts(containerId, products){
+function renderGrid(containerId, products) {
   const el = document.getElementById(containerId);
-  if(!products.length){el.innerHTML='<div style="text-align:center;color:#999;padding:40px;grid-column:1/-1;">No hay productos que coincidan</div>';return;}
-  el.innerHTML = products.map(p=>renderProductCard(p,containerId)).join('');
-}
-
-function showView(v){
-  document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));
-  document.getElementById('view-'+v).classList.add('active');
-  if(v==='home') renderProducts('home-products', PRODUCTS.filter(p=>p.badge).slice(0,6));
-  if(v==='catalogo') renderFilteredProducts();
-  if(v==='carrito') renderCart();
-  if(v==='checkout') renderCheckout();
-  window.scrollTo(0,0);
-}
-
-function showCat(cat){
-  currentCat=cat;
-  document.querySelectorAll('.catitem').forEach((el,i)=>{
-    el.classList.remove('active');
-    const cats=['Todos','Bebidas','Snacks','Conservas','Pastas/Cereales','Lácteos','Condimentos','Limpieza','Snacks'];
-    if(cats[i]===cat) el.classList.add('active');
-  });
-  showView('catalogo');
-}
-
-function filterProducts(){
-  searchQuery=document.getElementById('searchInput').value.toLowerCase();
-  renderFilteredProducts();
-}
-
-function renderFilteredProducts(){
-  let prods = PRODUCTS;
-  if(currentCat!=='Todos') prods=prods.filter(p=>p.cat===currentCat);
-  if(searchQuery) prods=prods.filter(p=>p.name.toLowerCase().includes(searchQuery)||p.brand.toLowerCase().includes(searchQuery)||p.cat.toLowerCase().includes(searchQuery));
-  document.getElementById('cat-title').textContent=currentCat==='Todos'?'Todo el catálogo':currentCat;
-  document.getElementById('prod-count').textContent=prods.length+' productos';
-  renderFilterRow();
-  renderProducts('catalog-products',prods);
-}
-
-function renderFilterRow(){
-  const cats=['Todos','Bebidas','Snacks','Conservas','Pastas/Cereales','Lácteos','Condimentos','Limpieza'];
-  document.getElementById('filters-row').innerHTML=cats.map(c=>`<div class="filter-chip ${currentCat===c?'active':''}" onclick="showCat('${c}')">${c}</div>`).join('');
-}
-
-function addToCart(id){
-  cart[id]=(cart[id]||0)+1;
-  updateCartBadge();
-  renderFilteredProducts();
-  if(document.getElementById('view-home').classList.contains('active')){
-    renderProducts('home-products',PRODUCTS.filter(p=>p.badge).slice(0,6));
-  }
-}
-
-function updateCartBadge(){
-  const total=Object.values(cart).reduce((a,b)=>a+b,0);
-  document.getElementById('cartBadge').textContent=total;
-}
-
-function removeFromCart(id){
-  if(cart[id]>1) cart[id]--;
-  else delete cart[id];
-  updateCartBadge();
-  renderCart();
-}
-
-function deleteFromCart(id){
-  delete cart[id];
-  updateCartBadge();
-  renderCart();
-}
-
-function getCartTotal(){
-  return Object.entries(cart).reduce((sum,[id,qty])=>{
-    const p=PRODUCTS.find(p=>p.id==id);
-    return sum+(p?p.price*qty:0);
-  },0);
-}
-
-function renderCart(){
-  const ids=Object.keys(cart).filter(id=>cart[id]>0);
-  const container=document.getElementById('cart-items-container');
-  if(!ids.length){
-    container.innerHTML=`<div class="cart-empty"><i class="ti ti-shopping-cart"></i><p>Tu carrito está vacío</p><br><button class="confirm-btn" style="max-width:200px;margin:0 auto;" onclick="showView('catalogo')">Ver catálogo</button></div>`;
-    document.getElementById('os-subtotal').textContent='$0';
-    document.getElementById('os-total').textContent='$0';
-    document.getElementById('checkout-btn').disabled=true;
+  if (!products.length) {
+    el.innerHTML = '<div class="no-products">No se encontraron productos</div>';
     return;
   }
-  document.getElementById('checkout-btn').disabled=false;
-  container.innerHTML=ids.map(id=>{
-    const p=PRODUCTS.find(p=>p.id==id);
-    const qty=cart[id];
-    return `<div class="cart-item">
-      <div class="cart-item-icon">${p.emoji}</div>
-      <div class="cart-item-info">
-        <div class="cart-item-name">${p.name}</div>
-        <div class="cart-item-sub">${p.brand} · ${p.pack}</div>
-        <div class="cart-qty">
-          <button class="qty-btn" onclick="removeFromCart(${p.id})"><i class="ti ti-minus" style="font-size:12px"></i></button>
-          <span class="qty-num">${qty}</span>
-          <button class="qty-btn" onclick="addToCart(${p.id})"><i class="ti ti-plus" style="font-size:12px"></i></button>
+  el.innerHTML = products.map(prodCard).join('');
+}
+
+// ─── VIEWS ───
+function goView(v) {
+  document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+  document.getElementById('view-' + v).classList.add('active');
+  if (v === 'home') renderGrid('home-prods', PRODUCTS.filter(p => p.badge).slice(0, 8));
+  if (v === 'catalogo') renderCatalog();
+  if (v === 'carrito') renderCart();
+  if (v === 'checkout') renderCheckout();
+  window.scrollTo(0, 0);
+}
+
+function goHome() { goView('home'); }
+
+// ─── CATEGORY ───
+function filterCat(cat) {
+  activeCat = cat;
+  document.querySelectorAll('.catbtn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.catbtn').forEach(b => {
+    if (b.textContent.includes(cat) || (cat === 'Todos' && b.textContent.includes('Todos'))) b.classList.add('active');
+  });
+  goView('catalogo');
+}
+
+function onSearch() {
+  searchQ = document.getElementById('searchInput').value.toLowerCase();
+  if (searchQ) goView('catalogo');
+  else renderCatalog();
+}
+
+function renderCatalog() {
+  let prods = PRODUCTS;
+  if (activeCat !== 'Todos') prods = prods.filter(p => p.cat === activeCat);
+  if (searchQ) prods = prods.filter(p =>
+    p.name.toLowerCase().includes(searchQ) ||
+    p.brand.toLowerCase().includes(searchQ) ||
+    p.cat.toLowerCase().includes(searchQ)
+  );
+  const title = activeCat === 'Todos' ? 'Todo el catálogo' : activeCat;
+  document.getElementById('cat-title').textContent = title;
+  document.getElementById('prod-count').textContent = prods.length + ' productos';
+  renderFilters();
+  renderGrid('catalog-prods', prods);
+}
+
+function renderFilters() {
+  const cats = ['Todos', 'Bebidas', 'Snacks', 'Conservas', 'Pastas/Cereales', 'Lácteos', 'Condimentos', 'Congelados'];
+  document.getElementById('filters-row').innerHTML = cats.map(c =>
+    `<div class="fchip ${activeCat === c ? 'active' : ''}" onclick="filterCat('${c}')">${c}</div>`
+  ).join('');
+}
+
+// ─── CART ───
+function addCart(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  updateBadge();
+  renderCatalog();
+  if (document.getElementById('view-home').classList.contains('active'))
+    renderGrid('home-prods', PRODUCTS.filter(p => p.badge).slice(0, 8));
+}
+
+function removeCart(id) {
+  if (cart[id] > 1) cart[id]--; else delete cart[id];
+  updateBadge();
+  renderCart();
+}
+
+function delCart(id) {
+  delete cart[id];
+  updateBadge();
+  renderCart();
+}
+
+function updateBadge() {
+  const total = Object.values(cart).reduce((a, b) => a + b, 0);
+  document.getElementById('cartCount').textContent = total;
+}
+
+function cartTotal() {
+  return Object.entries(cart).reduce((sum, [id, qty]) => {
+    const p = PRODUCTS.find(p => p.id == id);
+    return sum + (p ? p.price * qty : 0);
+  }, 0);
+}
+
+function cartItemCount() {
+  return Object.values(cart).reduce((a, b) => a + b, 0);
+}
+
+function renderCart() {
+  const ids = Object.keys(cart).filter(id => cart[id] > 0);
+  const cont = document.getElementById('cart-container');
+  if (!ids.length) {
+    cont.innerHTML = `<div class="cart-empty">
+      <span class="cart-empty-icon">🛒</span>
+      <p>Tu carrito está vacío</p>
+      <br>
+      <button class="btn-yellow" onclick="goView('catalogo')" style="margin:0 auto;display:inline-flex;">Ver catálogo</button>
+    </div>`;
+    document.getElementById('os-items').textContent = '0 items';
+    document.getElementById('os-sub').textContent = '$0';
+    document.getElementById('os-total').textContent = '$0';
+    document.getElementById('pay-btn').disabled = true;
+    return;
+  }
+  document.getElementById('pay-btn').disabled = false;
+  cont.innerHTML = ids.map(id => {
+    const p = PRODUCTS.find(p => p.id == id);
+    const qty = cart[id];
+    return `<div class="citem">
+      <div class="citem-icon">${p.emoji}</div>
+      <div class="citem-info">
+        <div class="citem-name">${p.name}</div>
+        <div class="citem-sub">${p.brand} · ${p.packLabel}</div>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="removeCart(${p.id})">−</button>
+          <span class="qty-n">${qty}</span>
+          <button class="qty-btn" onclick="addCart(${p.id})">+</button>
         </div>
       </div>
-      <div class="cart-item-price">${formatPrice(p.price*qty)}</div>
-      <button class="del-btn" onclick="deleteFromCart(${p.id})"><i class="ti ti-trash"></i></button>
+      <div class="citem-price">${fmt(p.price * qty)}</div>
+      <button class="del-btn" onclick="delCart(${p.id})">✕</button>
     </div>`;
   }).join('');
-  const total=getCartTotal();
-  document.getElementById('os-subtotal').textContent=formatPrice(total);
-  document.getElementById('os-total').textContent=formatPrice(total);
+  const total = cartTotal();
+  const items = cartItemCount();
+  document.getElementById('os-items').textContent = items + ' ' + (items === 1 ? 'item' : 'items');
+  document.getElementById('os-sub').textContent = fmt(total);
+  document.getElementById('os-total').textContent = fmt(total);
 }
 
-function renderCheckout(){
-  const ids=Object.keys(cart).filter(id=>cart[id]>0);
-  const total=getCartTotal();
-  document.getElementById('ms-items').innerHTML=ids.map(id=>{
-    const p=PRODUCTS.find(p=>p.id==id);
-    return `<div class="ms-item"><span>${p.emoji} ${p.name} x${cart[id]}</span><span class="n">${formatPrice(p.price*cart[id])}</span></div>`;
+// ─── CHECKOUT ───
+function renderCheckout() {
+  const ids = Object.keys(cart).filter(id => cart[id] > 0);
+  const total = cartTotal();
+  const itemsHtml = ids.map(id => {
+    const p = PRODUCTS.find(p => p.id == id);
+    return `<div class="ms-item"><span>${p.emoji} ${p.name} ×${cart[id]}</span><span class="n">${fmt(p.price * cart[id])}</span></div>`;
   }).join('');
-  document.getElementById('ms-total-val').textContent=formatPrice(total);
-  document.getElementById('ck-items-review').innerHTML=ids.map(id=>{
-    const p=PRODUCTS.find(p=>p.id==id);
-    return `<div class="ms-item"><span>${p.emoji} ${p.name} x${cart[id]}</span><span class="n">${formatPrice(p.price*cart[id])}</span></div>`;
-  }).join('')+`<div class="ms-total" style="margin-top:12px;"><span class="l">Total a pagar</span><span class="v">${formatPrice(total)}</span></div>`;
+  document.getElementById('ms-items').innerHTML = itemsHtml;
+  document.getElementById('ms-total').textContent = fmt(total);
+  document.getElementById('ck3-items').innerHTML = itemsHtml +
+    `<div class="ms-total" style="margin-top:12px;"><span class="l">Total a pagar</span><span class="v">${fmt(total)}</span></div>`;
 }
 
-function nextStep(n){
-  [1,2,3].forEach(i=>{
-    document.getElementById('ck-step'+i).style.display='none';
-    document.getElementById('sc'+i).classList.remove('active','done');
-    if(i<3) document.getElementById('sl'+i).classList.remove('done');
+function ckStep(n) {
+  [1,2,3].forEach(i => {
+    document.getElementById('ck'+i).style.display = 'none';
+    const circle = document.getElementById('sc'+i);
+    const label = document.getElementById('sl'+i);
+    circle.classList.remove('active','done');
+    label.classList.remove('active');
+    if (i < 3) document.getElementById('line'+i).classList.remove('done');
   });
-  document.getElementById('ck-step'+n).style.display='block';
-  for(let i=1;i<n;i++){
+  document.getElementById('ck'+n).style.display = 'block';
+  for (let i = 1; i < n; i++) {
     document.getElementById('sc'+i).classList.add('done');
-    document.getElementById('sl'+i).classList.add('done');
+    if (i < 3) document.getElementById('line'+i).classList.add('done');
   }
   document.getElementById('sc'+n).classList.add('active');
+  document.getElementById('sl'+n).classList.add('active');
 }
 
-function selectPay(el){
-  document.querySelectorAll('.pay-opt').forEach(e=>e.classList.remove('selected'));
-  el.classList.add('selected');
+function selPay(el) {
+  document.querySelectorAll('.popt').forEach(e => e.classList.remove('sel'));
+  el.classList.add('sel');
 }
 
-function resetAndGoHome(){
-  cart={};
-  updateCartBadge();
-  nextStep(1);
-  showView('home');
+function scrollToHow() {
+  goHome();
+  setTimeout(() => document.getElementById('how-section').scrollIntoView({behavior:'smooth'}), 100);
 }
 
-// Init
-showView('home');
+function resetHome() {
+  cart = {};
+  updateBadge();
+  ckStep(1);
+  activeCat = 'Todos';
+  searchQ = '';
+  document.getElementById('searchInput').value = '';
+  goView('home');
+}
+
+// ─── INIT ───
+goView('home');
 </script>
 </body>
 </html>
