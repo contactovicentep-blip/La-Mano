@@ -33,7 +33,7 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
 .hero{background:linear-gradient(135deg,var(--red) 0%,var(--red-dark) 100%);padding:28px 20px;display:flex;align-items:center;gap:20px;position:relative;overflow:hidden;min-height:170px;}
 .hero-wm{position:absolute;right:-10px;top:-20px;font-size:150px;opacity:.05;pointer-events:none;}
 .hero-body{flex:1;}
-.hero-pill{background:var(--yellow);color:var(--yellow-text);font-family:'Nunito',sans-serif;font-weight:800;font-size:10px;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;letter-spacing:.04em;text-transform:uppercase;}
+.hero-pill{background:var(--yellow);color:var(--yellow-text);font-family:'Nunito',sans-serif;font-weight:800;font-size:10px;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;text-transform:uppercase;}
 .hero h1{font-family:'Nunito',sans-serif;font-weight:900;font-size:30px;color:#fff;line-height:1.05;margin-bottom:7px;}
 .hero h1 em{color:var(--yellow);font-style:normal;}
 .hero p{color:rgba(255,255,255,.85);font-size:13px;margin-bottom:16px;line-height:1.5;}
@@ -47,10 +47,10 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
 .hstat-l{font-size:10px;opacity:.8;margin-top:2px;}
 .ystrip{background:var(--yellow);padding:9px 20px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;}
 .yitem{display:flex;align-items:center;gap:6px;font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;color:var(--yellow-text);}
-.mayorista-aviso{background:#fff3cd;border:2px solid var(--yellow);border-radius:12px;padding:12px 16px;margin:16px 20px;display:flex;align-items:center;gap:12px;}
-.mayorista-aviso-ico{font-size:28px;flex-shrink:0;}
-.mayorista-aviso h3{font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;color:var(--yellow-text);margin-bottom:2px;}
-.mayorista-aviso p{font-size:12px;color:#856404;line-height:1.4;}
+.aviso{background:#fff3cd;border:2px solid var(--yellow);border-radius:12px;padding:12px 16px;margin:16px 20px;display:flex;align-items:center;gap:12px;}
+.aviso-ico{font-size:28px;flex-shrink:0;}
+.aviso h3{font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;color:var(--yellow-text);margin-bottom:2px;}
+.aviso p{font-size:12px;color:#856404;line-height:1.4;}
 .pad{padding:16px 20px;}
 .sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
 .sec-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;color:var(--dark);display:flex;align-items:center;gap:7px;}
@@ -62,14 +62,12 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
 .cat-card:hover{border-color:var(--red);transform:translateY(-2px);}
 .cat-card .ci{font-size:26px;display:block;margin-bottom:6px;}
 .cat-card .cn{font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;color:#333;line-height:1.2;}
-
-/* PRODUCT CARDS */
 .prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:12px;margin-bottom:22px;}
 .pcard{background:#fff;border-radius:13px;border:1.5px solid var(--border);transition:all .18s;overflow:hidden;display:flex;flex-direction:column;}
 .pcard:hover{border-color:var(--red);transform:translateY(-2px);box-shadow:0 6px 20px rgba(227,30,36,.1);}
 .pcard-img{height:110px;background:var(--light);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .pcard-img img{width:100%;height:100%;object-fit:contain;padding:8px;}
-.pcard-img .emoji-fallback{font-size:46px;}
+.pcard-img .ef{font-size:46px;}
 .pbadge{position:absolute;top:7px;left:7px;font-size:9px;font-weight:800;padding:2px 7px;border-radius:5px;font-family:'Nunito',sans-serif;z-index:2;}
 .pbadge.red{background:var(--red);color:#fff;}
 .pbadge.yellow{background:var(--yellow);color:var(--yellow-text);}
@@ -83,43 +81,37 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
 .pack-val{font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;color:var(--dark);}
 .pack-total-row{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:5px;margin-top:5px;}
 .pack-total-price{font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;color:var(--red);}
-.margin-chip{font-size:9px;background:#e8f5e9;color:#1b5e20;padding:2px 6px;border-radius:5px;font-weight:800;font-family:'Nunito',sans-serif;}
-.qty-selector{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:8px;}
-.qty-selector button{background:#fff;border:none;padding:6px 12px;cursor:pointer;font-size:16px;font-weight:900;color:#555;transition:background .15s;}
-.qty-selector button:hover{background:var(--red-light);color:var(--red);}
+.mgchip{font-size:9px;background:#e8f5e9;color:#1b5e20;padding:2px 6px;border-radius:5px;font-weight:800;font-family:'Nunito',sans-serif;}
+.qty-sel{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:8px;}
+.qty-sel button{background:#fff;border:none;padding:6px 12px;cursor:pointer;font-size:16px;font-weight:900;color:#555;transition:background .15s;}
+.qty-sel button:hover{background:var(--red-light);color:var(--red);}
 .qty-n{flex:1;text-align:center;font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;background:var(--light);padding:6px 0;}
 .qty-unit{font-size:9px;display:block;color:var(--gray);font-weight:600;}
-.add-pack-btn{width:100%;background:var(--red);color:#fff;border:none;padding:9px;font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;transition:background .15s;}
-.add-pack-btn:hover{background:var(--red-dark);}
-.add-pack-btn.added{background:var(--green);}
-
-/* FILTERS */
+.add-btn{width:100%;background:var(--red);color:#fff;border:none;padding:9px;font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;transition:background .15s;}
+.add-btn:hover{background:var(--red-dark);}
+.add-btn.added{background:var(--green);}
 .filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
 .fchip{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:4px 12px;font-size:12px;font-family:'Nunito',sans-serif;font-weight:700;cursor:pointer;color:#555;transition:all .15s;}
 .fchip:hover,.fchip.active{background:var(--red);border-color:var(--red);color:#fff;}
 .prod-count{font-size:12px;color:#999;font-family:'Nunito',sans-serif;font-weight:700;}
-
-/* CART */
 .cart-layout{display:grid;grid-template-columns:1fr 290px;gap:18px;padding:16px 20px;align-items:start;}
 .cart-empty{text-align:center;padding:50px 20px;color:#ccc;}
 .citem{background:#fff;border-radius:12px;border:1.5px solid var(--border);padding:12px;margin-bottom:9px;display:flex;align-items:flex-start;gap:10px;}
 .citem-ico{width:52px;height:52px;background:var(--light);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;}
 .citem-ico img{width:100%;height:100%;object-fit:contain;padding:4px;}
-.citem-ico .ef{font-size:30px;}
 .citem-info{flex:1;}
 .citem-name{font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;margin-bottom:1px;}
 .citem-sub{font-size:11px;color:#bbb;margin-bottom:5px;}
-.citem-pack-info{background:var(--light);border-radius:7px;padding:5px 8px;font-size:11px;color:var(--gray);margin-bottom:5px;}
-.citem-pack-info strong{color:var(--dark);font-family:'Nunito',sans-serif;}
+.citem-pack{background:var(--light);border-radius:7px;padding:5px 8px;font-size:11px;color:var(--gray);margin-bottom:5px;}
+.citem-pack strong{color:var(--dark);font-family:'Nunito',sans-serif;}
 .qty-row{display:flex;align-items:center;gap:6px;}
 .qty-btn{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;color:#555;font-weight:900;transition:all .15s;}
 .qty-btn:hover{background:var(--red);border-color:var(--red);color:#fff;}
 .qty-n2{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;min-width:20px;text-align:center;}
-.qty-label{font-size:10px;color:var(--gray);}
 .citem-price{flex-shrink:0;text-align:right;}
 .citem-price-main{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:var(--red);}
 .citem-price-sub{font-size:10px;color:#bbb;}
-.del-btn{background:none;border:none;cursor:pointer;color:#ddd;font-size:18px;flex-shrink:0;transition:color .15s;padding:2px;}
+.del-btn{background:none;border:none;cursor:pointer;color:#ddd;font-size:18px;flex-shrink:0;transition:color .15s;}
 .del-btn:hover{color:var(--red);}
 .osummary{background:#fff;border-radius:13px;border:1.5px solid var(--border);padding:16px;position:sticky;top:75px;}
 .os-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;margin-bottom:12px;padding-bottom:10px;border-bottom:1.5px solid var(--border);}
@@ -134,8 +126,6 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
 .pay-btn{width:100%;background:var(--red);color:#fff;border:none;padding:13px;font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;margin-top:11px;transition:background .15s;}
 .pay-btn:hover{background:var(--red-dark);}
 .pay-btn:disabled{background:#ddd;cursor:default;}
-
-/* CHECKOUT */
 .checkout-layout{display:grid;grid-template-columns:1fr 270px;gap:18px;padding:16px 20px;align-items:start;}
 .step-track{display:flex;align-items:center;margin-bottom:20px;}
 .st-dot{display:flex;flex-direction:column;align-items:center;gap:3px;}
@@ -169,8 +159,6 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
 .confirm-btn{width:100%;background:var(--red);color:#fff;border:none;padding:12px;font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:11px;transition:background .15s;}
 .confirm-btn:hover{background:var(--red-dark);}
 .confirm-btn.green{background:var(--green);}
-
-/* SUCCESS */
 .success-wrap{text-align:center;padding:55px 20px;}
 .success-ico{width:84px;height:84px;background:#e8f5e9;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:42px;}
 .success-wrap h2{font-family:'Nunito',sans-serif;font-weight:900;font-size:26px;color:var(--green);margin-bottom:7px;}
@@ -200,16 +188,14 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
 </style>
 </head>
 <body>
-
 <div class="topbar">📦 PREVENTA MAYORISTA — Comprá por pack completo · Pagá online · Retirá en punto fijo · Precios bajos SIEMPRE</div>
-
 <nav class="navbar">
   <div class="logo" onclick="goHome()">
     <div class="logo-badge">🤌</div>
     <div><div class="logo-name">La Mano</div><div class="logo-tag">Mayorista · Precios Bajos · Siempre</div></div>
   </div>
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Buscar productos... (atún, coca-cola, fideos...)" oninput="onSearch()">
+    <input type="text" id="searchInput" placeholder="Buscar productos..." oninput="onSearch()">
     <button onclick="goView('catalogo')">🔍</button>
   </div>
   <div class="nav-right">
@@ -218,7 +204,6 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
     <button class="nbtn cart-nbtn" onclick="goView('carrito')">🛒<span>Carrito</span><span class="cart-count" id="cartCount">0</span></button>
   </div>
 </nav>
-
 <div class="catbar">
   <button class="catbtn active" onclick="filterCat('Todos')">🛒 Todos</button>
   <button class="catbtn" onclick="filterCat('Bebidas')">🧃 Bebidas</button>
@@ -228,14 +213,13 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
   <button class="catbtn" onclick="filterCat('Condimentos')">🧂 Condimentos</button>
 </div>
 
-<!-- HOME -->
 <div id="view-home" class="view active">
   <div class="hero">
     <div class="hero-wm">🤌</div>
     <div class="hero-body">
       <div class="hero-pill">✦ Preventa mayorista activa esta semana</div>
       <h1>Precios bajos,<br><em>siempre.</em></h1>
-      <p>Comprá por pack completo, pagá online y retirá en punto fijo.<br>Modelo 100% mayorista — sin venta por unidad.</p>
+      <p>Comprá por pack completo, pagá online y retirá en punto fijo.<br>Modelo 100% mayorista.</p>
       <div class="hero-ctas">
         <button class="btn-y" onclick="goView('catalogo')">🛒 Ver catálogo</button>
         <button class="btn-g" onclick="document.getElementById('how-sec').scrollIntoView({behavior:'smooth'})">📍 ¿Cómo funciona?</button>
@@ -252,12 +236,9 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
     <div class="yitem">📦 Solo venta por pack</div>
     <div class="yitem">🔄 Preventa semanal</div>
   </div>
-  <div class="mayorista-aviso">
-    <div class="mayorista-aviso-ico">📦</div>
-    <div>
-      <h3>Venta exclusiva por pack — modelo mayorista</h3>
-      <p>La compra mínima es el pack completo (caja, display o bolsa de bodega). El total del pack se indica en cada producto.</p>
-    </div>
+  <div class="aviso">
+    <div class="aviso-ico">📦</div>
+    <div><h3>Venta exclusiva por pack — modelo mayorista</h3><p>La compra mínima es el pack completo. El total del pack se indica en cada producto.</p></div>
   </div>
   <div class="pad">
     <div class="sec-hdr"><div class="sec-title">Categorías</div><button class="link-btn" onclick="goView('catalogo')">Ver todas →</button></div>
@@ -283,10 +264,9 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
   </div>
 </div>
 
-<!-- CATÁLOGO -->
 <div id="view-catalogo" class="view">
-  <div class="mayorista-aviso" style="margin:14px 20px;">
-    <div class="mayorista-aviso-ico">📦</div>
+  <div class="aviso" style="margin:14px 20px;">
+    <div class="aviso-ico">📦</div>
     <div><h3>Compra mínima: 1 pack completo por producto</h3><p>Podés pedir múltiples packs. El precio unitario es referencial — el total siempre es por pack.</p></div>
   </div>
   <div class="pad" style="padding-top:0;">
@@ -299,7 +279,6 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
   </div>
 </div>
 
-<!-- CARRITO -->
 <div id="view-carrito" class="view">
   <div class="cart-layout">
     <div>
@@ -319,7 +298,6 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
   </div>
 </div>
 
-<!-- CHECKOUT -->
 <div id="view-checkout" class="view">
   <div style="padding:16px 20px 0;">
     <div class="step-track">
@@ -341,7 +319,7 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
         </div>
         <div class="form-card">
           <h3>📍 Punto de retiro</h3>
-          <div style="background:var(--light);border-radius:9px;padding:13px;display:flex;gap:11px;align-items:flex-start;">
+          <div style="background:var(--light);border-radius:9px;padding:13px;display:flex;gap:11px;">
             <span style="font-size:24px;">📍</span>
             <div><div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;margin-bottom:3px;">Punto fijo La Mano — Santiago</div><div style="font-size:12px;color:var(--gray);line-height:1.5;">La dirección se confirma por WhatsApp al procesar el pago. Lunes a sábado, horario coordinado.</div></div>
           </div>
@@ -382,7 +360,6 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
   </div>
 </div>
 
-<!-- SUCCESS -->
 <div id="view-success" class="view">
   <div class="success-wrap">
     <div class="success-ico">✅</div>
@@ -408,38 +385,36 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--dark)
 </footer>
 
 <script>
+// NOMBRES EXACTOS de los archivos en GitHub
 const PRODUCTS = [
-  // SNACKS — con imágenes reales
-  {id:1,name:'Inkat Crunch Amarillo',brand:'Calaf',content:'80g',cat:'Snacks',cost:499,price:750,pack:21,img:'Im%C3%A1genes/en%20kat%20crunch%20amarillo%20.avif',emoji:'🍿',badge:'TOP',bt:'yellow'},
-  {id:2,name:'Inkat Crunch Rojo',brand:'Calaf',content:'80g',cat:'Snacks',cost:499,price:750,pack:21,img:'Im%C3%A1genes/en%20kat%20crunch%20rojo%20.avif',emoji:'🍿',badge:'',bt:''},
-  {id:3,name:'Bimbo Zoo',brand:'Ambrosoli',content:'98g',cat:'Snacks',cost:750,price:1000,pack:12,img:'Im%C3%A1genes/bimbo%20zoo.avif',emoji:'🐻',badge:'',bt:''},
-  {id:4,name:'Gato Late',brand:'Evercrisp',content:'200g',cat:'Snacks',cost:1650,price:1850,pack:10,img:'Im%C3%A1genes/Gatolate.webp',emoji:'🍿',badge:'',bt:''},
-  {id:5,name:'Traga Traga',brand:'Evercrisp',content:'200g',cat:'Snacks',cost:1650,price:1850,pack:10,img:'Im%C3%A1genes/traga%20traga.webp',emoji:'🍿',badge:'',bt:''},
-  {id:6,name:'Tutipops',brand:'Evercrisp',content:'200g',cat:'Snacks',cost:1650,price:1850,pack:10,img:'Im%C3%A1genes/Tutipops.webp',emoji:'🍿',badge:'',bt:''},
-  {id:7,name:'Cabritas',brand:'Evercrisp',content:'250g',cat:'Snacks',cost:1650,price:1850,pack:10,img:'Im%C3%A1genes/Cabritas.webp',emoji:'🍿',badge:'',bt:''},
-  {id:8,name:'Frac Clásica',brand:'Costa',content:'110g',cat:'Snacks',cost:524,price:600,pack:36,img:'Im%C3%A1genes/Frac%20clasica.avif',emoji:'🍪',badge:'',bt:''},
-  {id:9,name:'Cookie Crisp',brand:'Nestlé',content:'310g',cat:'Snacks',cost:1000,price:1500,pack:18,img:'Im%C3%A1genes/Cockie%20Crisp.avif',emoji:'🍪',badge:'',bt:''},
-  {id:10,name:'Oreo',brand:'Mondelez',content:'119g',cat:'Snacks',cost:600,price:790,pack:12,img:'Im%C3%A1genes/Oreo.jpg',emoji:'🍪',badge:'',bt:''},
-  {id:11,name:'Takis',brand:'Barcel',content:'varios',cat:'Snacks',cost:750,price:990,pack:12,img:'Im%C3%A1genes/Takis.webp',emoji:'🌶️',badge:'POPULAR',bt:'red'},
-  {id:12,name:'Papas Caseras',brand:'Marco Polo',content:'140g',cat:'Snacks',cost:750,price:938,pack:16,img:'Im%C3%A1genes/papas%20caseras%20marco%20polo.webp',emoji:'🥔',badge:'',bt:''},
-  {id:13,name:'Papas Americano',brand:'Marco Polo',content:'150g',cat:'Snacks',cost:750,price:964,pack:14,img:'Im%C3%A1genes/papas%20corte%20americano.webp',emoji:'🥔',badge:'',bt:''},
-  {id:14,name:'Papas Cibulette',brand:'Marco Polo',content:'140g',cat:'Snacks',cost:750,price:938,pack:16,img:'Im%C3%A1genes/papas%20cibulette.webp',emoji:'🥔',badge:'',bt:''},
-  {id:15,name:'Papas Jamón Serrano',brand:'Marco Polo',content:'140g',cat:'Snacks',cost:750,price:938,pack:16,img:'Im%C3%A1genes/papas%20jam%C3%B3n%20serrano.avif',emoji:'🥔',badge:'',bt:''},
-  {id:16,name:'Crunchi Maní',brand:'Marco Polo',content:'200g',cat:'Snacks',cost:903,price:1129,pack:9,img:'Im%C3%A1genes/crujiente%20sabor%20mani.webp',emoji:'🥜',badge:'',bt:''},
-  {id:17,name:'Crunchi Tutipop',brand:'Marco Polo',content:'200g',cat:'Snacks',cost:903,price:1129,pack:9,img:'Im%C3%A1genes/Tutipops.webp',emoji:'🍿',badge:'',bt:''},
-  {id:18,name:'Rollos Naranja',brand:'Calaf',content:'80g',cat:'Snacks',cost:499,price:750,pack:21,img:'Im%C3%A1genes/Rollos%20crujientes%20Naranja.webp',emoji:'🍬',badge:'',bt:''},
-  {id:19,name:'Mega Dúo Chocolate',brand:'Evercrisp',content:'200g',cat:'Snacks',cost:1650,price:1850,pack:10,img:'Im%C3%A1genes/mega%20d%C3%BAo%20chocolate.webp',emoji:'🍫',badge:'',bt:''},
-  {id:20,name:'Oblea Vainilla',brand:'varios',content:'pack',cat:'Snacks',cost:500,price:700,pack:12,img:'Im%C3%A1genes/oblea%20vainilla%20.webp',emoji:'🍬',badge:'',bt:''},
-  {id:21,name:'Raffaello',brand:'Ferrero',content:'90g',cat:'Snacks',cost:1200,price:1590,pack:12,img:'Im%C3%A1genes/Rafaello.avif',emoji:'🍬',badge:'',bt:''},
-  {id:22,name:'Maní Salado sin piel',brand:'Maní King',content:'145g',cat:'Snacks',cost:590,price:650,pack:20,img:'Im%C3%A1genes/Mani%20king%20salado%20sin%20piel.webp',emoji:'🥜',badge:'',bt:''},
-  {id:23,name:'Maní Tostado s/sal 145g',brand:'Maní King',content:'145g',cat:'Snacks',cost:590,price:650,pack:20,img:'Im%C3%A1genes/Mani%20rey%20tostado%20sin%20piel.webp',emoji:'🥜',badge:'',bt:''},
-  {id:24,name:'Maní Tostado s/sal 360g',brand:'Maní King',content:'360g',cat:'Snacks',cost:1290,price:1500,pack:15,img:'Im%C3%A1genes/Mani%20king%20tostado%20sin%20piel%20350g.webp',emoji:'🥜',badge:'MEJOR VALOR',bt:'green'},
-  // BEBIDAS — con imágenes reales
-  {id:25,name:'Coca-Cola Mini',brand:'Coca-Cola',content:'250ml',cat:'Bebidas',cost:250,price:500,pack:12,img:'Im%C3%A1genes/Coca%20Cola%20250.png',emoji:'🥤',badge:'TOP 1',bt:'yellow'},
-  {id:26,name:'Score Water sin gas',brand:'Score',content:'500ml',cat:'Bebidas',cost:299,price:500,pack:24,img:'Im%C3%A1genes/puntuaci%C3%B3n%20agua%20sin%20gas.webp',emoji:'💧',badge:'MARGEN 40%',bt:'green'},
-  {id:27,name:'Score Water con gas',brand:'Score',content:'500ml',cat:'Bebidas',cost:299,price:500,pack:24,img:'Im%C3%A1genes/puntuaci%C3%B3n%20agua%20gas.webp',emoji:'💧',badge:'',bt:''},
-  {id:28,name:'Crush 3L',brand:'Crush',content:'3L',cat:'Bebidas',cost:700,price:990,pack:6,img:'Im%C3%A1genes/Crush%203l.png',emoji:'🧡',badge:'',bt:''},
-  // CONSERVAS — sin imagen aún (emoji de respaldo)
+  {id:1,name:'Inkat Crunch Amarillo',brand:'Calaf',content:'80g',cat:'Snacks',cost:499,price:750,pack:21,img:'imagenes/inkat-amarillo.webp',emoji:'🍿',badge:'TOP',bt:'yellow'},
+  {id:2,name:'Inkat Crunch Rojo',brand:'Calaf',content:'80g',cat:'Snacks',cost:499,price:750,pack:21,img:'imagenes/inkat-rojo.avif',emoji:'🍿',badge:'',bt:''},
+  {id:3,name:'Bimbo Zoo',brand:'Ambrosoli',content:'98g',cat:'Snacks',cost:750,price:1000,pack:12,img:'imagenes/bimbo-zoo.avif',emoji:'🐻',badge:'',bt:''},
+  {id:4,name:'Gato Late',brand:'Evercrisp',content:'200g',cat:'Snacks',cost:1650,price:1850,pack:10,img:'imagenes/gato-late.webp',emoji:'🍿',badge:'',bt:''},
+  {id:5,name:'Traga Traga',brand:'Evercrisp',content:'200g',cat:'Snacks',cost:1650,price:1850,pack:10,img:'imagenes/traga-traga.webp',emoji:'🍿',badge:'',bt:''},
+  {id:6,name:'Tutipops',brand:'Evercrisp',content:'200g',cat:'Snacks',cost:1650,price:1850,pack:10,img:'imagenes/tutipops.webp',emoji:'🍿',badge:'',bt:''},
+  {id:7,name:'Cabritas',brand:'Evercrisp',content:'250g',cat:'Snacks',cost:1650,price:1850,pack:10,img:'imagenes/cabritas.webp',emoji:'🍿',badge:'',bt:''},
+  {id:8,name:'Frac Clásica',brand:'Costa',content:'110g',cat:'Snacks',cost:524,price:600,pack:36,img:'imagenes/frac-clasica.avif',emoji:'🍪',badge:'',bt:''},
+  {id:9,name:'Cookie Crisp',brand:'Nestlé',content:'310g',cat:'Snacks',cost:1000,price:1500,pack:18,img:'imagenes/cookie-crisp.avif',emoji:'🍪',badge:'',bt:''},
+  {id:10,name:'Oreo',brand:'Mondelez',content:'119g',cat:'Snacks',cost:600,price:790,pack:12,img:'imagenes/oreo.jpg',emoji:'🍪',badge:'',bt:''},
+  {id:11,name:'Takis',brand:'Barcel',content:'varios',cat:'Snacks',cost:750,price:990,pack:12,img:'imagenes/takis.webp',emoji:'🌶️',badge:'POPULAR',bt:'red'},
+  {id:12,name:'Papas Caseras',brand:'Marco Polo',content:'140g',cat:'Snacks',cost:750,price:938,pack:16,img:'imagenes/papas-caseras.webp',emoji:'🥔',badge:'',bt:''},
+  {id:13,name:'Papas Americano',brand:'Marco Polo',content:'150g',cat:'Snacks',cost:750,price:964,pack:14,img:'imagenes/papas-americano.webp',emoji:'🥔',badge:'',bt:''},
+  {id:14,name:'Papas Cibulette',brand:'Marco Polo',content:'140g',cat:'Snacks',cost:750,price:938,pack:16,img:'imagenes/papas-cibulette.webp',emoji:'🥔',badge:'',bt:''},
+  {id:15,name:'Papas Jamón Serrano',brand:'Marco Polo',content:'140g',cat:'Snacks',cost:750,price:938,pack:16,img:'imagenes/papas-jamon.avif',emoji:'🥔',badge:'',bt:''},
+  {id:16,name:'Crunchi Maní',brand:'Marco Polo',content:'200g',cat:'Snacks',cost:903,price:1129,pack:9,img:'imagenes/crunchi-mani.webp',emoji:'🥜',badge:'',bt:''},
+  {id:17,name:'Crunchi Tutipop',brand:'Marco Polo',content:'200g',cat:'Snacks',cost:903,price:1129,pack:9,img:'imagenes/tutipops.webp',emoji:'🍿',badge:'',bt:''},
+  {id:18,name:'Rollos Naranja',brand:'Calaf',content:'80g',cat:'Snacks',cost:499,price:750,pack:21,img:'imagenes/rollos-naranja.webp',emoji:'🍬',badge:'',bt:''},
+  {id:19,name:'Mega Dúo Chocolate',brand:'Evercrisp',content:'200g',cat:'Snacks',cost:1650,price:1850,pack:10,img:'imagenes/mega-duo.webp',emoji:'🍫',badge:'',bt:''},
+  {id:20,name:'Oblea Vainilla',brand:'varios',content:'pack',cat:'Snacks',cost:500,price:700,pack:12,img:'imagenes/oblea-vainilla.webp',emoji:'🍬',badge:'',bt:''},
+  {id:21,name:'Raffaello',brand:'Ferrero',content:'90g',cat:'Snacks',cost:1200,price:1590,pack:12,img:'imagenes/rafaello.avif',emoji:'🍬',badge:'',bt:''},
+  {id:22,name:'Maní Salado',brand:'Maní King',content:'145g',cat:'Snacks',cost:590,price:650,pack:20,img:'imagenes/mani-salado.webp',emoji:'🥜',badge:'',bt:''},
+  {id:23,name:'Maní Tostado 145g',brand:'Maní King',content:'145g',cat:'Snacks',cost:590,price:650,pack:20,img:'imagenes/mani-tostado-145.webp',emoji:'🥜',badge:'',bt:''},
+  {id:24,name:'Maní Tostado 360g',brand:'Maní King',content:'360g',cat:'Snacks',cost:1290,price:1500,pack:15,img:'imagenes/mani-tostado-360.webp',emoji:'🥜',badge:'MEJOR VALOR',bt:'green'},
+  {id:25,name:'Coca-Cola Mini',brand:'Coca-Cola',content:'250ml',cat:'Bebidas',cost:250,price:500,pack:12,img:'imagenes/coca-cola 250.png',emoji:'🥤',badge:'TOP 1',bt:'yellow'},
+  {id:26,name:'Score Water sin gas',brand:'Score',content:'500ml',cat:'Bebidas',cost:299,price:500,pack:24,img:'imagenes/score agua sin gas.webp',emoji:'💧',badge:'MARGEN 40%',bt:'green'},
+  {id:27,name:'Score Water con gas',brand:'Score',content:'500ml',cat:'Bebidas',cost:299,price:500,pack:24,img:'imagenes/score agua gas.webp',emoji:'💧',badge:'',bt:''},
+  {id:28,name:'Crush 3L',brand:'Crush',content:'3L',cat:'Bebidas',cost:700,price:990,pack:6,img:'imagenes/crush 3l.png',emoji:'🧡',badge:'',bt:''},
   {id:29,name:'Lomo Atún aceite',brand:'San José',content:'170g',cat:'Conservas',cost:1160,price:1250,pack:48,img:'',emoji:'🐟',badge:'',bt:''},
   {id:30,name:'Lomo Atún agua',brand:'De Reyes',content:'170g',cat:'Conservas',cost:760,price:850,pack:24,img:'',emoji:'🐟',badge:'',bt:''},
   {id:31,name:'Lomo Atún agua',brand:'Misol',content:'170g',cat:'Conservas',cost:813,price:950,pack:24,img:'',emoji:'🐟',badge:'',bt:''},
@@ -451,14 +426,12 @@ const PRODUCTS = [
   {id:37,name:'Crema de Leche 157g',brand:'Nestlé',content:'157g',cat:'Conservas',cost:892,price:1000,pack:24,img:'',emoji:'🥛',badge:'',bt:''},
   {id:38,name:'Crema de Leche 236g',brand:'Nestlé',content:'236g',cat:'Conservas',cost:1277,price:1400,pack:24,img:'',emoji:'🥛',badge:'',bt:''},
   {id:39,name:'Cream of Coconut',brand:'Roland',content:'425g',cat:'Conservas',cost:390,price:550,pack:24,img:'',emoji:'🥥',badge:'',bt:''},
-  // PASTAS
   {id:40,name:'Fideos instantáneos 65g',brand:'Misol',content:'65g',cat:'Pastas',cost:401,price:550,pack:12,img:'',emoji:'🍜',badge:'',bt:''},
   {id:41,name:'Fideos instantáneos 85g',brand:'Misol',content:'85g',cat:'Pastas',cost:235,price:400,pack:12,img:'',emoji:'🍜',badge:'',bt:''},
   {id:42,name:'Cereal Milo',brand:'Nestlé',content:'pack',cat:'Pastas',cost:2400,price:2650,pack:12,img:'',emoji:'🍫',badge:'',bt:''},
-  {id:43,name:'Cereal Cola Cao Pillo',brand:'Cola Cao',content:'pack',cat:'Pastas',cost:1980,price:2230,pack:12,img:'',emoji:'🍫',badge:'',bt:''},
+  {id:43,name:'Cereal Cola Cao',brand:'Cola Cao',content:'pack',cat:'Pastas',cost:1980,price:2230,pack:12,img:'',emoji:'🍫',badge:'',bt:''},
   {id:44,name:'Cereal Trix',brand:'Nestlé',content:'700g',cat:'Pastas',cost:3745,price:3933,pack:16,img:'',emoji:'🌈',badge:'',bt:''},
   {id:45,name:'Cereal Gold',brand:'Nestlé',content:'pack',cat:'Pastas',cost:2751,price:2965,pack:14,img:'',emoji:'🥣',badge:'',bt:''},
-  // CONDIMENTOS
   {id:46,name:"Mayonesa Hellmann's",brand:"Hellmann's",content:'630g',cat:'Condimentos',cost:1766,price:2016,pack:12,img:'',emoji:'🫙',badge:'',bt:''},
   {id:47,name:'Mayonesa Real',brand:'Kraft',content:'789g',cat:'Condimentos',cost:5457,price:5835,pack:12,img:'',emoji:'🫙',badge:'',bt:''},
   {id:48,name:'Ketchup Real',brand:'Kraft',content:'850g',cat:'Condimentos',cost:1750,price:2188,pack:12,img:'',emoji:'🍅',badge:'',bt:''},
@@ -472,32 +445,27 @@ const PRODUCTS = [
   {id:56,name:'Azúcar Light',brand:'Ianza',content:'500g',cat:'Condimentos',cost:1337,price:1487,pack:20,img:'',emoji:'🍬',badge:'',bt:''},
 ];
 
-let cart = {};
-let activeCat = 'Todos';
-let searchQ = '';
-let qtySelected = {};
+let cart={},activeCat='Todos',searchQ='',qtySelected={};
+const fmt=n=>'$'+Math.round(n).toLocaleString('es-CL');
+const margin=p=>Math.round(((p.price-p.cost)/p.price)*100);
+const packTotal=p=>p.price*p.pack;
 
-const fmt = n => '$' + Math.round(n).toLocaleString('es-CL');
-const margin = p => Math.round(((p.price - p.cost) / p.price) * 100);
-const packTotal = p => p.price * p.pack;
-
-function imgTag(p) {
-  if (p.img) {
-    return `<img src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-            <span class="emoji-fallback" style="display:none;">${p.emoji}</span>`;
+function imgContent(p,size='big'){
+  if(p.img){
+    const s=size==='big'?'width:100%;height:100%;object-fit:contain;padding:8px;':'width:100%;height:100%;object-fit:contain;padding:4px;';
+    return `<img src="${p.img}" alt="${p.name}" style="${s}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <span class="ef" style="display:none;">${p.emoji}</span>`;
   }
-  return `<span class="emoji-fallback">${p.emoji}</span>`;
+  return `<span class="ef">${p.emoji}</span>`;
 }
 
-function prodCard(p) {
-  const inCart = cart[p.id] ? cart[p.id].packs : 0;
-  const qty = qtySelected[p.id] || 1;
-  const tot = packTotal(p);
-  const mg = margin(p);
+function prodCard(p){
+  const inCart=cart[p.id]?cart[p.id].packs:0;
+  const qty=qtySelected[p.id]||1;
   return `<div class="pcard">
     <div class="pcard-img">
-      ${imgTag(p)}
-      ${p.badge ? `<span class="pbadge ${p.bt}">${p.badge}</span>` : ''}
+      ${imgContent(p,'big')}
+      ${p.badge?`<span class="pbadge ${p.bt}">${p.badge}</span>`:''}
     </div>
     <div class="pcard-body">
       <div class="pcard-brand">${p.brand}</div>
@@ -508,127 +476,115 @@ function prodCard(p) {
         <div class="pack-total-row">
           <span class="pack-lbl">Total del pack</span>
           <div style="display:flex;align-items:center;gap:5px;">
-            <span class="pack-total-price">${fmt(tot)}</span>
-            <span class="margin-chip">+${mg}%</span>
+            <span class="pack-total-price">${fmt(packTotal(p))}</span>
+            <span class="mgchip">+${margin(p)}%</span>
           </div>
         </div>
       </div>
-      <div class="qty-selector">
+      <div class="qty-sel">
         <button onclick="changeQty(${p.id},-1)">−</button>
         <div class="qty-n">${qty}<span class="qty-unit">pack${qty>1?'s':''}</span></div>
         <button onclick="changeQty(${p.id},1)">+</button>
       </div>
     </div>
-    <button class="add-pack-btn ${inCart ? 'added' : ''}" onclick="addCart(${p.id})">
-      ${inCart ? `✓ ${inCart} pack${inCart>1?'s':''} en carrito` : `📦 Agregar ${qty} pack${qty>1?'s':''}`}
+    <button class="add-btn ${inCart?'added':''}" onclick="addCart(${p.id})">
+      ${inCart?`✓ ${inCart} pack${inCart>1?'s':''} en carrito`:`📦 Agregar ${qty} pack${qty>1?'s':''}`}
     </button>
   </div>`;
 }
 
-function renderGrid(id, products) {
-  const el = document.getElementById(id);
-  if (!products.length) { el.innerHTML = '<div class="no-prods">No se encontraron productos</div>'; return; }
-  el.innerHTML = products.map(prodCard).join('');
+function renderGrid(id,products){
+  const el=document.getElementById(id);
+  if(!products.length){el.innerHTML='<div class="no-prods">No se encontraron productos</div>';return;}
+  el.innerHTML=products.map(prodCard).join('');
 }
 
-function changeQty(id, delta) {
-  qtySelected[id] = Math.max(1, (qtySelected[id] || 1) + delta);
-  if (document.getElementById('view-catalogo').classList.contains('active')) renderCatalog();
-  if (document.getElementById('view-home').classList.contains('active')) renderGrid('home-prods', PRODUCTS.filter(p => p.badge).slice(0, 8));
+function changeQty(id,delta){
+  qtySelected[id]=Math.max(1,(qtySelected[id]||1)+delta);
+  if(document.getElementById('view-catalogo').classList.contains('active'))renderCatalog();
+  if(document.getElementById('view-home').classList.contains('active'))renderGrid('home-prods',PRODUCTS.filter(p=>p.badge).slice(0,8));
 }
 
-function addCart(id) {
-  const qty = qtySelected[id] || 1;
-  cart[id] = { packs: (cart[id] ? cart[id].packs : 0) + qty };
-  qtySelected[id] = 1;
+function addCart(id){
+  const qty=qtySelected[id]||1;
+  cart[id]={packs:(cart[id]?cart[id].packs:0)+qty};
+  qtySelected[id]=1;
   updateBadge();
-  if (document.getElementById('view-catalogo').classList.contains('active')) renderCatalog();
-  if (document.getElementById('view-home').classList.contains('active')) renderGrid('home-prods', PRODUCTS.filter(p => p.badge).slice(0, 8));
+  if(document.getElementById('view-catalogo').classList.contains('active'))renderCatalog();
+  if(document.getElementById('view-home').classList.contains('active'))renderGrid('home-prods',PRODUCTS.filter(p=>p.badge).slice(0,8));
 }
 
-function updateBadge() {
-  const total = Object.values(cart).reduce((a, b) => a + b.packs, 0);
-  document.getElementById('cartCount').textContent = total;
+function updateBadge(){
+  document.getElementById('cartCount').textContent=Object.values(cart).reduce((a,b)=>a+b.packs,0);
 }
 
-function cartTotal() {
-  return Object.entries(cart).reduce((sum, [id, v]) => {
-    const p = PRODUCTS.find(p => p.id == id);
-    return sum + (p ? packTotal(p) * v.packs : 0);
-  }, 0);
+function cartTotal(){
+  return Object.entries(cart).reduce((sum,[id,v])=>{const p=PRODUCTS.find(p=>p.id==id);return sum+(p?packTotal(p)*v.packs:0);},0);
 }
 
-function renderCart() {
-  const ids = Object.keys(cart).filter(id => cart[id].packs > 0);
-  const cont = document.getElementById('cart-container');
-  if (!ids.length) {
-    cont.innerHTML = `<div class="cart-empty"><span style="font-size:56px;display:block;margin-bottom:10px;">🛒</span><p style="font-family:'Nunito',sans-serif;font-weight:700;font-size:15px;color:#bbb;">Tu carrito está vacío</p><br><button class="btn-y" onclick="goView('catalogo')" style="margin:0 auto;display:inline-block;">Ver catálogo</button></div>`;
-    document.getElementById('os-packs').textContent='0';
-    document.getElementById('os-units').textContent='0';
-    document.getElementById('os-sub').textContent='$0';
-    document.getElementById('os-total').textContent='$0';
-    document.getElementById('pay-btn').disabled=true;
-    return;
+function renderCart(){
+  const ids=Object.keys(cart).filter(id=>cart[id].packs>0);
+  const cont=document.getElementById('cart-container');
+  if(!ids.length){
+    cont.innerHTML=`<div class="cart-empty"><span style="font-size:56px;display:block;margin-bottom:10px;">🛒</span><p style="font-family:'Nunito',sans-serif;font-weight:700;font-size:15px;color:#bbb;">Tu carrito está vacío</p><br><button class="btn-y" onclick="goView('catalogo')" style="margin:0 auto;display:inline-block;">Ver catálogo</button></div>`;
+    ['os-packs','os-units','os-sub','os-total'].forEach(id=>document.getElementById(id).textContent=id.includes('packs')||id.includes('units')?'0':'$0');
+    document.getElementById('pay-btn').disabled=true;return;
   }
   document.getElementById('pay-btn').disabled=false;
-  cont.innerHTML = ids.map(id => {
-    const p = PRODUCTS.find(p => p.id == id);
-    const packs = cart[id].packs;
-    const totalPack = packTotal(p) * packs;
-    const imgContent = p.img
-      ? `<img src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" style="width:100%;height:100%;object-fit:contain;padding:4px;"><span style="display:none;font-size:28px;">${p.emoji}</span>`
-      : `<span class="ef">${p.emoji}</span>`;
+  cont.innerHTML=ids.map(id=>{
+    const p=PRODUCTS.find(p=>p.id==id),packs=cart[id].packs,tot=packTotal(p)*packs;
+    const ico=p.img?`<img src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" style="width:100%;height:100%;object-fit:contain;padding:4px;"><span style="display:none;font-size:28px;">${p.emoji}</span>`:`<span style="font-size:28px;">${p.emoji}</span>`;
     return `<div class="citem">
-      <div class="citem-ico">${imgContent}</div>
+      <div class="citem-ico">${ico}</div>
       <div class="citem-info">
         <div class="citem-name">${p.name} ${p.content}</div>
         <div class="citem-sub">${p.brand}</div>
-        <div class="citem-pack-info"><strong>${p.pack} unidades × pack</strong> · ${fmt(p.price)} c/u</div>
+        <div class="citem-pack"><strong>${p.pack} unidades × pack</strong> · ${fmt(p.price)} c/u</div>
         <div class="qty-row">
-          <button class="qty-btn" onclick="cartRemovePack(${p.id})">−</button>
+          <button class="qty-btn" onclick="cartRem(${p.id})">−</button>
           <span class="qty-n2">${packs}</span>
-          <button class="qty-btn" onclick="cartAddPack(${p.id})">+</button>
-          <span class="qty-label">pack${packs>1?'s':''}</span>
+          <button class="qty-btn" onclick="cartAdd(${p.id})">+</button>
+          <span style="font-size:10px;color:var(--gray);">pack${packs>1?'s':''}</span>
         </div>
       </div>
-      <div class="citem-price"><div class="citem-price-main">${fmt(totalPack)}</div><div class="citem-price-sub">${packs * p.pack} unidades</div></div>
+      <div class="citem-price"><div class="citem-price-main">${fmt(tot)}</div><div class="citem-price-sub">${packs*p.pack} unidades</div></div>
       <button class="del-btn" onclick="delCart(${p.id})">✕</button>
     </div>`;
   }).join('');
-  const total = cartTotal();
-  const totalPacks = Object.values(cart).reduce((a,b)=>a+b.packs,0);
-  const totalUnits = Object.entries(cart).reduce((sum,[id,v])=>{const p=PRODUCTS.find(p=>p.id==id);return sum+(p?p.pack*v.packs:0);},0);
-  document.getElementById('os-packs').textContent=totalPacks;
-  document.getElementById('os-units').textContent=totalUnits+' un.';
+  const total=cartTotal();
+  const tp=Object.values(cart).reduce((a,b)=>a+b.packs,0);
+  const tu=Object.entries(cart).reduce((s,[id,v])=>{const p=PRODUCTS.find(p=>p.id==id);return s+(p?p.pack*v.packs:0);},0);
+  document.getElementById('os-packs').textContent=tp;
+  document.getElementById('os-units').textContent=tu+' un.';
   document.getElementById('os-sub').textContent=fmt(total);
   document.getElementById('os-total').textContent=fmt(total);
 }
 
-function cartAddPack(id){cart[id].packs++;updateBadge();renderCart();}
-function cartRemovePack(id){if(cart[id].packs>1)cart[id].packs--;else delete cart[id];updateBadge();renderCart();}
+function cartAdd(id){cart[id].packs++;updateBadge();renderCart();}
+function cartRem(id){if(cart[id].packs>1)cart[id].packs--;else delete cart[id];updateBadge();renderCart();}
 function delCart(id){delete cart[id];updateBadge();renderCart();}
 
-function renderCheckout() {
-  const ids = Object.keys(cart).filter(id=>cart[id].packs>0);
-  const total = cartTotal();
-  const html = ids.map(id=>{const p=PRODUCTS.find(p=>p.id==id);const packs=cart[id].packs;return `<div class="ms-item"><span>${p.emoji} ${p.name} × ${packs} pack${packs>1?'s':''}</span><span class="n">${fmt(packTotal(p)*packs)}</span></div>`;}).join('');
+function renderCheckout(){
+  const ids=Object.keys(cart).filter(id=>cart[id].packs>0);
+  const total=cartTotal();
+  const html=ids.map(id=>{const p=PRODUCTS.find(p=>p.id==id),packs=cart[id].packs;return `<div class="ms-item"><span>${p.emoji} ${p.name} × ${packs} pack${packs>1?'s':''}</span><span class="n">${fmt(packTotal(p)*packs)}</span></div>`;}).join('');
   document.getElementById('ms-items').innerHTML=html;
   document.getElementById('ms-total').textContent=fmt(total);
-  document.getElementById('ck3-items').innerHTML=html+`<div class="ms-total" style="margin-top:10px;"><span class="l">Total a pagar</span><span class="v">${fmt(total)}</span></div>`;
+  document.getElementById('ck3-items').innerHTML=html+`<div class="ms-total" style="margin-top:10px;"><span class="l">Total</span><span class="v">${fmt(total)}</span></div>`;
 }
 
-function goView(v) {
+function goView(v){
   document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));
   document.getElementById('view-'+v).classList.add('active');
-  if(v==='home') renderGrid('home-prods',PRODUCTS.filter(p=>p.badge).slice(0,8));
-  if(v==='catalogo') renderCatalog();
-  if(v==='carrito') renderCart();
-  if(v==='checkout') renderCheckout();
+  if(v==='home')renderGrid('home-prods',PRODUCTS.filter(p=>p.badge).slice(0,8));
+  if(v==='catalogo')renderCatalog();
+  if(v==='carrito')renderCart();
+  if(v==='checkout')renderCheckout();
   window.scrollTo(0,0);
 }
 function goHome(){goView('home');}
 
-function filterCat(cat) {
+function filterCat(cat){
   activeCat=cat;
   document.querySelectorAll('.catbtn').forEach(b=>{b.classList.remove('active');if((cat==='Todos'&&b.textContent.includes('Todos'))||b.textContent.includes(cat))b.classList.add('active');});
   goView('catalogo');
@@ -636,31 +592,29 @@ function filterCat(cat) {
 
 function onSearch(){searchQ=document.getElementById('searchInput').value.toLowerCase();goView('catalogo');}
 
-function renderCatalog() {
+function renderCatalog(){
   let prods=PRODUCTS;
-  if(activeCat!=='Todos') prods=prods.filter(p=>p.cat===activeCat);
-  if(searchQ) prods=prods.filter(p=>p.name.toLowerCase().includes(searchQ)||p.brand.toLowerCase().includes(searchQ));
+  if(activeCat!=='Todos')prods=prods.filter(p=>p.cat===activeCat);
+  if(searchQ)prods=prods.filter(p=>p.name.toLowerCase().includes(searchQ)||p.brand.toLowerCase().includes(searchQ));
   document.getElementById('cat-title').textContent=activeCat==='Todos'?'Todo el catálogo':activeCat;
   document.getElementById('prod-count').textContent=prods.length+' productos';
   renderFilters();
   renderGrid('catalog-prods',prods);
 }
 
-function renderFilters() {
+function renderFilters(){
   const cats=['Todos','Bebidas','Snacks','Conservas','Pastas','Condimentos'];
   document.getElementById('filters-row').innerHTML=cats.map(c=>`<div class="fchip ${activeCat===c?'active':''}" onclick="filterCat('${c}')">${c}</div>`).join('');
 }
 
-function ckStep(n) {
+function ckStep(n){
   [1,2,3].forEach(i=>{document.getElementById('ck'+i).style.display='none';document.getElementById('sc'+i).classList.remove('active','done');document.getElementById('sl'+i).classList.remove('active');if(i<3)document.getElementById('line'+i).classList.remove('done');});
   document.getElementById('ck'+n).style.display='block';
   for(let i=1;i<n;i++){document.getElementById('sc'+i).classList.add('done');if(i<3)document.getElementById('line'+i).classList.add('done');}
-  document.getElementById('sc'+n).classList.add('active');
-  document.getElementById('sl'+n).classList.add('active');
+  document.getElementById('sc'+n).classList.add('active');document.getElementById('sl'+n).classList.add('active');
 }
 
 function selPay(el){document.querySelectorAll('.popt').forEach(e=>e.classList.remove('sel'));el.classList.add('sel');}
-
 function resetHome(){cart={};qtySelected={};searchQ='';activeCat='Todos';updateBadge();ckStep(1);document.getElementById('searchInput').value='';goView('home');}
 
 goView('home');
